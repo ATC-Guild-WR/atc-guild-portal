@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATC Guild (WR) Portal</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --success-bg: #ecfdf5;
+      --success-text: #065f46;
+      --danger-bg: #fef2f2;
+      --danger-text: #991b1b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 40px; }
+
+    .nav { background: #fff; border-bottom: 1px solid var(--border); display: flex; justify-content: center; position: sticky; top: 0; z-index: 10; }
+    .nav-btn { background: none; border: none; padding: 14px 24px; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
+    .nav-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .container { max-width: 440px; margin: 20px auto; padding: 0 16px; }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    .card { background: var(--surface); border-radius: 14px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .header { text-align: center; margin-bottom: 16px; }
+    .header h1 { font-size: 19px; font-weight: 700; }
+    .header p { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    label { display: block; font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 6px; text-transform: uppercase; }
+    input[type="text"] { width: 100%; padding: 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 16px; outline: none; margin-bottom: 14px; }
+    input[type="text"]:focus { border-color: var(--primary); }
+
+    button.btn { width: 100%; background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; }
+    button.btn:hover { background: var(--primary-dark); }
+
+    .status-banner { padding: 10px; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; margin: 14px 0; }
+    .status-banner.due { background: var(--danger-bg); color: var(--danger-text); border: 1px solid #fecaca; }
+    .status-banner.clear { background: var(--success-bg); color: var(--success-text); border: 1px solid #a7f3d0; }
+
+    .data-table { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; }
+    .data-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #edf2f7; }
+    .data-row:last-child { border-bottom: none; }
+    .data-label { color: var(--muted); }
+    .data-val { font-weight: 600; }
+
+    .bank-card { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 12px; font-size: 12px; margin-top: 10px; }
+    .bank-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+    .copy-btn { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-size: 10px; cursor: pointer; font-weight: 600; }
+
+    .post-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+    .post-date { font-size: 11px; font-weight: 700; color: var(--primary); }
+    .post-title { font-size: 15px; font-weight: 700; margin: 4px 0; }
+    .post-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+    .post-link { display: inline-block; margin-top: 6px; font-size: 12px; color: var(--primary); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showTab('dues', this)">Dues Lookup</button>
+    <button class="nav-btn" onclick="showTab('circulars', this)">Circulars</button>
+  </nav>
+
+  <div class="container">
+    <!-- DUES TAB -->
+    <div id="pane-dues" class="tab-pane active">
+      <div class="card">
+        <div class="header">
+          <h1>Mumbai ATCO Dues Portal</h1>
+          <p>Enter Employee ID to view your standing</p>
+        </div>
+
+        <label for="empId">Employee ID</label>
+        <input type="text" id="empId" placeholder="e.g. 100452" autocomplete="off" />
+        <button class="btn" id="searchBtn" onclick="fetchDues()">Check Status</button>
+
+        <div id="duesOutput" style="display: none; margin-top: 16px;">
+          <div id="statusBanner" class="status-banner"></div>
+          <div class="data-table">
+            <div class="data-row"><span class="data-label">Name</span><span class="data-val" id="resName">--</span></div>
+            <div class="data-row"><span class="data-label">Employee ID</span><span class="data-val" id="resId">--</span></div>
+            <div class="data-row"><span class="data-label">Dues Paid Upto</span><span class="data-val" id="resPaidTill">--</span></div>
+            <div class="data-row"><span class="data-label">Pending Dues</span><span class="data-val" id="resAmount">--</span></div>
+          </div>
+
+          <div id="bankSection" class="bank-card" style="display: none;">
+            <strong>Bank Details (IMPS/NEFT):</strong>
+            <div class="bank-row" style="margin-top: 6px;">
+              <span>A/C: ATC GUILD INDIA WR</span>
+            </div>
+            <div class="bank-row">
+              <span id="accNum">123456789012</span>
+              <button class="copy-btn" onclick="copyText('accNum', this)">Copy</button>
+            </div>
+            <div class="bank-row">
+              <span id="ifscCode">SBIN0001234</span>
+              <button class="copy-btn" onclick="copyText('ifscCode', this)">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CIRCULARS TAB -->
+    <div id="pane-circulars" class="tab-pane">
+      <div id="circularsList">
+        <p style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px;">Loading announcements...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // PASTE YOUR SCRIPT URL FROM PHASE 3 HERE:
+    const API_URL = "https://script.google.com/macros/s/AKfycbwFRTzDmp3_I3VjyQ51C_zH7Wvf0HIH-Z5OBUowElkWKZq7SihwG-QuUJMm_LUxgCbi/exec";
+
+    function showTab(tab, btn) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('pane-' + tab).classList.add('active');
+      btn.classList.add('active');
+
+      if (tab === 'circulars') loadAnnouncements();
+    }
+
+    async function fetchDues() {
+      const id = document.getElementById('empId').value.trim();
+      const btn = document.getElementById('searchBtn');
+      const out = document.getElementById('duesOutput');
+      const banner = document.getElementById('statusBanner');
+      const bank = document.getElementById('bankSection');
+
+      if (!id) return alert('Enter Employee ID');
+
+      btn.disabled = true;
+      btn.innerText = "Checking...";
+      out.style.display = "none";
+
+      try {
+        const response = await fetch(`${API_URL}?action=dues&empId=${encodeURIComponent(id)}`);
+        const res = await response.json();
+
+        btn.disabled = false;
+        btn.innerText = "Check Status";
+
+        if (res.success) {
+          out.style.display = "block";
+          document.getElementById('resName').textContent = res.name;
+          document.getElementById('resId').textContent = res.empId;
+          document.getElementById('resPaidTill').textContent = res.paidTill;
+
+          const numDue = Number(String(res.pendingAmount).replace(/[^0-9.]/g, '')) || 0;
+          if (numDue > 0) {
+            banner.className = "status-banner due";
+            banner.textContent = "Payment Outstanding";
+            document.getElementById('resAmount').textContent = "₹" + res.pendingAmount;
+            document.getElementById('resAmount').style.color = "#dc2626";
+            bank.style.display = "block";
+          } else {
+            banner.className = "status-banner clear";
+            banner.textContent = "✓ All Dues Clear";
+            document.getElementById('resAmount').textContent = "Nil";
+            document.getElementById('resAmount').style.color = "#16a34a";
+            bank.style.display = "none";
+          }
+        } else {
+          alert(res.message);
+        }
+      } catch (e) {
+        btn.disabled = false;
+        btn.innerText = "Check Status";
+        alert("Failed to load records. Try again.");
+      }
+    }
+
+    async function loadAnnouncements() {
+      const box = document.getElementById('circularsList');
+      try {
+        const response = await fetch(`${API_URL}?action=announcements`);
+        const res = await response.json();
+        if (res.success && res.items.length > 0) {
+          box.innerHTML = res.items.map(item => `
+            <div class="post-card">
+              <span class="post-date">${item.date}</span>
+              <h3 class="post-title">${item.title}</h3>
+              <p class="post-desc">${item.summary}</p>
+              ${item.link ? `<a class="post-link" href="${item.link}" target="_blank">View Circular ↗</a>` : ''}
+            </div>
+          `).join('');
+        } else {
+          box.innerHTML = "<p style='text-align:center; color:gray; font-size:13px;'>No announcements available.</p>";
+        }
+      } catch(e) {
+        box.innerHTML = "<p style='text-align:center; color:red; font-size:13px;'>Could not load circulars.</p>";
+      }
+    }
+
+    function copyText(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.innerText;
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = old, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
