@@ -3,98 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ATC Guild (WR) Portal</title>
+  <title>ATC Guild (India) - WR Portal</title>
   <style>
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
+      --primary: #0a2540;       /* Classic Navy */
+      --primary-accent: #1e3a8a;/* Guild Accent Blue */
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #1e293b;
       --muted: #64748b;
-      --border: #e2e8f0;
+      --border: #cbd5e1;
       --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
       --success-text: #065f46;
       --danger-bg: #fef2f2;
+      --danger-border: #fecaca;
       --danger-text: #991b1b;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
     body {
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-    .nav { background: #fff; border-bottom: 1px solid var(--border); display: flex; justify-content: center; position: sticky; top: 0; z-index: 10; }
-    .nav-btn { background: none; border: none; padding: 14px 24px; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
-    .nav-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+    /* Pinned Navigation Bar */
+    .nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .nav-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
 
+    /* Page Container */
     .container {
-  max-width: 440px;
-  width: 100%;
-  margin: auto;
-  padding: 16px;
-}
+      max-width: 460px;
+      width: 100%;
+      margin: auto;
+      padding: 20px 16px;
+    }
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
 
-    .card { background: var(--surface); border-radius: 14px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-    .header { text-align: center; margin-bottom: 16px; }
-    .header h1 { font-size: 19px; font-weight: 700; }
-    .header p { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    /* V1 Base Card */
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
 
-    label { display: block; font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 6px; text-transform: uppercase; }
-    input[type="text"] { width: 100%; padding: 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 16px; outline: none; margin-bottom: 14px; }
-    input[type="text"]:focus { border-color: var(--primary); }
+    .header { text-align: center; margin-bottom: 20px; }
+    .header-logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    .header h1 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .header h2 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
-    button.btn { width: 100%; background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; }
-    button.btn:hover { background: var(--primary-dark); }
+    /* Input Fields */
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 14px;
+      background: #f8fafc;
+    }
+    input[type="text"]:focus {
+      border-color: var(--primary-accent);
+      background: #ffffff;
+    }
 
-    .status-banner { padding: 10px; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; margin: 14px 0; }
-    .status-banner.due { background: var(--danger-bg); color: var(--danger-text); border: 1px solid #fecaca; }
-    .status-banner.clear { background: var(--success-bg); color: var(--success-text); border: 1px solid #a7f3d0; }
+    button.btn {
+      width: 100%;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+    button.btn:hover { background: var(--primary-accent); }
 
-    .data-table { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; }
-    .data-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #edf2f7; }
+    /* V1 Status Badges */
+    .status-banner {
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+      margin: 16px 0;
+      letter-spacing: 0.3px;
+    }
+    .status-banner.due {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border: 1px solid var(--danger-border);
+    }
+    .status-banner.clear {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    /* V1 Result Table */
+    .data-table {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      font-size: 13px;
+      border-bottom: 1px solid #edf2f7;
+    }
     .data-row:last-child { border-bottom: none; }
-    .data-label { color: var(--muted); }
-    .data-val { font-weight: 600; }
+    .data-label { color: var(--muted); font-weight: 500; }
+    .data-val { font-weight: 700; color: var(--text); }
 
-    .bank-card { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 12px; font-size: 12px; margin-top: 10px; }
-    .bank-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
-    .copy-btn { background: #e0f2fe; border: 1px solid #7dd3fc; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-size: 10px; cursor: pointer; font-weight: 600; }
+    /* Bank Details Card */
+    .bank-card {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 12px;
+    }
+    .bank-card-title {
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .bank-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+    }
+    .copy-btn {
+      background: #e0f2fe;
+      border: 1px solid #7dd3fc;
+      color: #0369a1;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .copy-btn:hover { background: #bae6fd; }
 
-    .post-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
-    .post-date { font-size: 11px; font-weight: 700; color: var(--primary); }
-    .post-title { font-size: 15px; font-weight: 700; margin: 4px 0; }
-    .post-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
-    .post-link { display: inline-block; margin-top: 6px; font-size: 12px; color: var(--primary); text-decoration: none; font-weight: 600; }
-  .header-logo {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 14px auto;
-}
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* Shared List Cards (Circulars & Desk) */
+    .item-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .item-meta { font-size: 11px; font-weight: 700; color: var(--primary-accent); text-transform: uppercase; }
+    .item-title { font-size: 15px; font-weight: 700; margin: 4px 0; color: var(--text); }
+    .item-desc { font-size: 13px; color: var(--muted); line-height: 1.4; }
+    .item-link { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--primary-accent); text-decoration: none; font-weight: 700; }
   </style>
 </head>
 <body>
 
+  <!-- Navigation Bar (3 Tabs) -->
   <nav class="nav">
     <button class="nav-btn active" onclick="showTab('dues', this)">Dues Lookup</button>
     <button class="nav-btn" onclick="showTab('circulars', this)">Circulars</button>
+    <button class="nav-btn" onclick="showTab('desk', this)">WR Desk</button>
   </nav>
 
   <div class="container">
-    <!-- DUES TAB -->
+    <!-- TAB 1: DUES LOOKUP -->
     <div id="pane-dues" class="tab-pane active">
       <div class="card">
         <div class="header">
           <img src="3ebb9976-128a-49ce-a2a3-711bb2c45110.jpg" alt="Guild Logo" class="header-logo" />
-          <h1>ATCO Dues Portal</h1>
-          <p>Enter Employee ID to view your standing</p>
+          <h1>ATC Guild (India) - WR</h1>
+          <h2>Membership Dues Portal</h2>
         </div>
 
         <label for="empId">Employee ID</label>
@@ -103,41 +261,51 @@
 
         <div id="duesOutput" style="display: none; margin-top: 16px;">
           <div id="statusBanner" class="status-banner"></div>
+          
           <div class="data-table">
             <div class="data-row"><span class="data-label">Name</span><span class="data-val" id="resName">--</span></div>
             <div class="data-row"><span class="data-label">Employee ID</span><span class="data-val" id="resId">--</span></div>
             <div class="data-row"><span class="data-label">Dues Paid Upto</span><span class="data-val" id="resPaidTill">--</span></div>
-            <div class="data-row"><span class="data-label">Pending Dues</span><span class="data-val" id="resAmount">--</span></div>
+            <div class="data-row"><span class="data-label">Pending Amount</span><span class="data-val" id="resAmount">--</span></div>
           </div>
 
           <div id="bankSection" class="bank-card" style="display: none;">
-            <strong>Bank Details (IMPS/NEFT):</strong>
-            <div class="bank-row" style="margin-top: 6px;">
-              <span>A/C: ATC GUILD INDIA WR</span>
+            <div class="bank-card-title">Bank Transfer Details (IMPS / NEFT)</div>
+            <div class="bank-row">
+              <span>A/C Name: <strong>ATC GUILD INDIA</strong></span>
             </div>
             <div class="bank-row">
-              <span id="accNum">123456789012</span>
+              <span>A/C No: <strong id="accNum">85990100000989</strong></span>
               <button class="copy-btn" onclick="copyText('accNum', this)">Copy</button>
             </div>
             <div class="bank-row">
-              <span id="ifscCode">SBIN0001234</span>
+              <span>IFSC: <strong id="ifscCode">BARB0VJAPMU</strong></span>
               <button class="copy-btn" onclick="copyText('ifscCode', this)">Copy</button>
             </div>
           </div>
+
+          <div class="footer-note">Discrepancy in records? Contact Abhishek Narayan Singh, Regional Treasurer(WR).</div>
         </div>
       </div>
     </div>
 
-    <!-- CIRCULARS TAB -->
+    <!-- TAB 2: CIRCULARS -->
     <div id="pane-circulars" class="tab-pane">
       <div id="circularsList">
         <p style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px;">Loading announcements...</p>
       </div>
     </div>
+
+    <!-- TAB 3: WR DESK CONTACTS -->
+    <div id="pane-desk" class="tab-pane">
+      <div id="deskList">
+        <p style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px;">Loading contacts...</p>
+      </div>
+    </div>
   </div>
 
   <script>
-    // PASTE YOUR SCRIPT URL FROM PHASE 3 HERE:
+    // PASTE YOUR V2 WEB APP URL HERE:
     const API_URL = "https://script.google.com/macros/s/AKfycbwFRTzDmp3_I3VjyQ51C_zH7Wvf0HIH-Z5OBUowElkWKZq7SihwG-QuUJMm_LUxgCbi/exec";
 
     function showTab(tab, btn) {
@@ -147,6 +315,7 @@
       btn.classList.add('active');
 
       if (tab === 'circulars') loadAnnouncements();
+      if (tab === 'desk') loadDesk();
     }
 
     async function fetchDues() {
@@ -156,7 +325,7 @@
       const banner = document.getElementById('statusBanner');
       const bank = document.getElementById('bankSection');
 
-      if (!id) return alert('Enter Employee ID');
+      if (!id) return alert('Please enter your Employee ID');
 
       btn.disabled = true;
       btn.innerText = "Checking...";
@@ -173,18 +342,18 @@
           out.style.display = "block";
           document.getElementById('resName').textContent = res.name;
           document.getElementById('resId').textContent = res.empId;
-          document.getElementById('resPaidTill').textContent = res.paidTill;
+          document.getElementById('resPaidTill').textContent = res.paidTill || "N/A";
 
           const numDue = Number(String(res.pendingAmount).replace(/[^0-9.]/g, '')) || 0;
           if (numDue > 0) {
             banner.className = "status-banner due";
-            banner.textContent = "Payment Outstanding";
+            banner.textContent = "PAYMENT OUTSTANDING";
             document.getElementById('resAmount').textContent = "₹" + res.pendingAmount;
             document.getElementById('resAmount').style.color = "#dc2626";
             bank.style.display = "block";
           } else {
             banner.className = "status-banner clear";
-            banner.textContent = "✓ All Dues Clear";
+            banner.textContent = "✓ ALL DUES CLEAR";
             document.getElementById('resAmount').textContent = "Nil";
             document.getElementById('resAmount').style.color = "#16a34a";
             bank.style.display = "none";
@@ -195,7 +364,7 @@
       } catch (e) {
         btn.disabled = false;
         btn.innerText = "Check Status";
-        alert("Failed to load records. Try again.");
+        alert("Failed to load records. Please verify network connection or Employee ID.");
       }
     }
 
@@ -206,18 +375,41 @@
         const res = await response.json();
         if (res.success && res.items.length > 0) {
           box.innerHTML = res.items.map(item => `
-            <div class="post-card">
-              <span class="post-date">${item.date}</span>
-              <h3 class="post-title">${item.title}</h3>
-              <p class="post-desc">${item.summary}</p>
-              ${item.link ? `<a class="post-link" href="${item.link}" target="_blank">View Circular ↗</a>` : ''}
+            <div class="item-card">
+              <span class="item-meta">${item.date}</span>
+              <h3 class="item-title">${item.title}</h3>
+              <p class="item-desc">${item.summary}</p>
+              ${item.link ? `<a class="item-link" href="${item.link}" target="_blank">View Circular ↗</a>` : ''}
             </div>
           `).join('');
         } else {
-          box.innerHTML = "<p style='text-align:center; color:gray; font-size:13px;'>No announcements available.</p>";
+          box.innerHTML = "<p style='text-align:center; color:var(--muted); font-size:13px; margin-top:20px;'>No announcements available.</p>";
         }
       } catch(e) {
-        box.innerHTML = "<p style='text-align:center; color:red; font-size:13px;'>Could not load circulars.</p>";
+        box.innerHTML = "<p style='text-align:center; color:red; font-size:13px; margin-top:20px;'>Could not load circulars.</p>";
+      }
+    }
+
+    async function loadDesk() {
+      const box = document.getElementById('deskList');
+      try {
+        const response = await fetch(`${API_URL}?action=desk`);
+        const res = await response.json();
+        if (res.success && res.items.length > 0) {
+          box.innerHTML = res.items.map(item => `
+            <div class="item-card">
+              <span class="item-meta">${item.role}</span>
+              <h3 class="item-title">${item.name}</h3>
+              <p class="item-desc" style="margin-top: 4px;">
+                <strong>Contact:</strong> ${item.contact}
+              </p>
+            </div>
+          `).join('');
+        } else {
+          box.innerHTML = "<p style='text-align:center; color:var(--muted); font-size:13px; margin-top:20px;'>No desk contacts listed.</p>";
+        }
+      } catch(e) {
+        box.innerHTML = "<p style='text-align:center; color:red; font-size:13px; margin-top:20px;'>Could not load desk contacts.</p>";
       }
     }
 
