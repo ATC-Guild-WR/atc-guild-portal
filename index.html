@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATC Guild (India) - WR Portal</title>
-  <!-- Favicon & Mobile App Icons -->
-<link rel="icon" type="image/jpeg" href="3ebb9976-128a-49ce-a2a3-711bb2c45110.jpg">
-<link rel="apple-touch-icon" href="3ebb9976-128a-49ce-a2a3-711bb2c45110.jpg">
 
-<!-- Mobile Web App Capability -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="ATC Guild WR">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0a2540">
+  <!-- Favicon & Mobile App Icons (Replace filename if different) -->
+  <link rel="icon" type="image/jpeg" href="3ebb9976-128a-49ce-a2a3-711bb2c45110.jpg">
+  <link rel="apple-touch-icon" href="3ebb9976-128a-49ce-a2a3-711bb2c45110.jpg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ATC Guild WR">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0a2540">
+
   <style>
     :root {
-      --primary: #0a2540;       /* Classic Navy */
-      --primary-accent: #1e3a8a;/* Guild Accent Blue */
+      --primary: #0a2540;
+      --primary-accent: #1e3a8a;
       --bg: #f4f6f9;
       --card-bg: #ffffff;
       --text: #1e293b;
@@ -41,7 +41,6 @@
       flex-direction: column;
     }
 
-    /* Pinned Navigation Bar */
     .nav {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
@@ -69,7 +68,6 @@
       border-bottom-color: var(--primary);
     }
 
-    /* Page Container */
     .container {
       max-width: 460px;
       width: 100%;
@@ -79,7 +77,6 @@
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
 
-    /* V1 Base Card */
     .card {
       background: var(--card-bg);
       border-radius: 12px;
@@ -110,7 +107,6 @@
       margin-top: 2px;
     }
 
-    /* Input Fields */
     label {
       display: block;
       font-size: 11px;
@@ -120,17 +116,17 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    input[type="text"] {
+    input[type="text"], input[type="file"], input[type="number"] {
       width: 100%;
-      padding: 12px 14px;
+      padding: 11px 13px;
       border: 1.5px solid var(--border);
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 14px;
       outline: none;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       background: #f8fafc;
     }
-    input[type="text"]:focus {
+    input[type="text"]:focus, input[type="number"]:focus {
       border-color: var(--primary-accent);
       background: #ffffff;
     }
@@ -149,8 +145,8 @@
       cursor: pointer;
     }
     button.btn:hover { background: var(--primary-accent); }
+    button.btn:disabled { background: var(--muted); cursor: not-allowed; }
 
-    /* V1 Status Badges */
     .status-banner {
       padding: 12px;
       border-radius: 8px;
@@ -171,7 +167,6 @@
       border: 1px solid var(--success-border);
     }
 
-    /* V1 Result Table */
     .data-table {
       background: #f8fafc;
       border: 1px solid var(--border);
@@ -198,6 +193,7 @@
       border-radius: 8px;
       padding: 14px;
       font-size: 12px;
+      margin-bottom: 16px;
     }
     .bank-card-title {
       font-weight: 700;
@@ -222,7 +218,24 @@
       cursor: pointer;
       font-weight: 700;
     }
-    .copy-btn:hover { background: #bae6fd; }
+
+    /* UTR Submission Card */
+    .proof-card {
+      background: #ffffff;
+      border: 1.5px dashed var(--primary-accent);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .proof-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-align: center;
+    }
 
     .footer-note {
       text-align: center;
@@ -231,7 +244,6 @@
       margin-top: 14px;
     }
 
-    /* Shared List Cards (Circulars & Desk) */
     .item-card {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -248,7 +260,6 @@
 </head>
 <body>
 
-  <!-- Navigation Bar (3 Tabs) -->
   <nav class="nav">
     <button class="nav-btn active" onclick="showTab('dues', this)">Dues Lookup</button>
     <button class="nav-btn" onclick="showTab('circulars', this)">Circulars</button>
@@ -256,7 +267,7 @@
   </nav>
 
   <div class="container">
-    <!-- TAB 1: DUES LOOKUP -->
+    <!-- DUES TAB -->
     <div id="pane-dues" class="tab-pane active">
       <div class="card">
         <div class="header">
@@ -279,6 +290,7 @@
             <div class="data-row"><span class="data-label">Pending Amount</span><span class="data-val" id="resAmount">--</span></div>
           </div>
 
+          <!-- Bank Card -->
           <div id="bankSection" class="bank-card" style="display: none;">
             <div class="bank-card-title">Bank Transfer Details (IMPS / NEFT)</div>
             <div class="bank-row">
@@ -294,19 +306,36 @@
             </div>
           </div>
 
+          <!-- UTR Submission Form -->
+          <div id="proofSection" class="proof-card" style="display: none;">
+            <div class="proof-card-title">Submit Payment Details</div>
+            
+            <label for="utrNumber">12-Digit UTR / Transaction Ref</label>
+            <input type="text" id="utrNumber" placeholder="e.g. 425619847120" />
+
+            <label for="amountPaid">Amount Transferred (₹)</label>
+            <input type="number" id="amountPaid" placeholder="Amount transferred" />
+
+            <label for="proofScreenshot">Upload Transfer Screenshot</label>
+            <input type="file" id="proofScreenshot" accept="image/*" />
+
+            <button class="btn" id="submitProofBtn" onclick="submitPaymentProof()">Submit Payment Proof</button>
+            <div id="submitMsg" style="display:none; font-size:12px; margin-top:10px; text-align:center; font-weight:600;"></div>
+          </div>
+
           <div class="footer-note">Discrepancy in records? Contact Abhishek Narayan Singh, Regional Treasurer(WR).</div>
         </div>
       </div>
     </div>
 
-    <!-- TAB 2: CIRCULARS -->
+    <!-- CIRCULARS TAB -->
     <div id="pane-circulars" class="tab-pane">
       <div id="circularsList">
         <p style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px;">Loading announcements...</p>
       </div>
     </div>
 
-    <!-- TAB 3: WR DESK CONTACTS -->
+    <!-- WR DESK TAB -->
     <div id="pane-desk" class="tab-pane">
       <div id="deskList">
         <p style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px;">Loading contacts...</p>
@@ -317,6 +346,8 @@
   <script>
     // PASTE YOUR V2 WEB APP URL HERE:
     const API_URL = "https://script.google.com/macros/s/AKfycbwFRTzDmp3_I3VjyQ51C_zH7Wvf0HIH-Z5OBUowElkWKZq7SihwG-QuUJMm_LUxgCbi/exec";
+
+    let currentMember = null;
 
     function showTab(tab, btn) {
       document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
@@ -334,12 +365,14 @@
       const out = document.getElementById('duesOutput');
       const banner = document.getElementById('statusBanner');
       const bank = document.getElementById('bankSection');
+      const proof = document.getElementById('proofSection');
 
       if (!id) return alert('Please enter your Employee ID');
 
       btn.disabled = true;
       btn.innerText = "Checking...";
       out.style.display = "none";
+      document.getElementById('submitMsg').style.display = 'none';
 
       try {
         const response = await fetch(`${API_URL}?action=dues&empId=${encodeURIComponent(id)}`);
@@ -349,24 +382,30 @@
         btn.innerText = "Check Status";
 
         if (res.success) {
+          currentMember = res;
           out.style.display = "block";
           document.getElementById('resName').textContent = res.name;
           document.getElementById('resId').textContent = res.empId;
           document.getElementById('resPaidTill').textContent = res.paidTill || "N/A";
 
-          const numDue = Number(String(res.pendingAmount).replace(/[^0-9.]/g, '')) || 0;
+          const cleanAmt = String(res.pendingAmount).replace(/[^0-9.]/g, '');
+          const numDue = Number(cleanAmt) || 0;
+
           if (numDue > 0) {
             banner.className = "status-banner due";
             banner.textContent = "PAYMENT OUTSTANDING";
             document.getElementById('resAmount').textContent = "₹" + res.pendingAmount;
             document.getElementById('resAmount').style.color = "#dc2626";
             bank.style.display = "block";
+            proof.style.display = "block";
+            document.getElementById('amountPaid').value = numDue;
           } else {
             banner.className = "status-banner clear";
             banner.textContent = "✓ ALL DUES CLEAR";
             document.getElementById('resAmount').textContent = "Nil";
             document.getElementById('resAmount').style.color = "#16a34a";
             bank.style.display = "none";
+            proof.style.display = "none";
           }
         } else {
           alert(res.message);
@@ -376,6 +415,70 @@
         btn.innerText = "Check Status";
         alert("Failed to load records. Please verify network connection or Employee ID.");
       }
+    }
+
+    async function submitPaymentProof() {
+      const utr = document.getElementById('utrNumber').value.trim();
+      const amount = document.getElementById('amountPaid').value.trim();
+      const fileInput = document.getElementById('proofScreenshot');
+      const btn = document.getElementById('submitProofBtn');
+      const msg = document.getElementById('submitMsg');
+
+      if (!utr) return alert("Please enter the 12-digit UTR or Transaction Reference number.");
+      if (!amount) return alert("Please enter the amount paid.");
+      if (!fileInput.files || fileInput.files.length === 0) {
+        return alert("Please select a screenshot of the payment receipt.");
+      }
+
+      const file = fileInput.files[0];
+      if (file.size > 5 * 1024 * 1024) {
+        return alert("File is too large. Please upload an image under 5 MB.");
+      }
+
+      btn.disabled = true;
+      btn.innerText = "Uploading Proof...";
+      msg.style.display = "none";
+
+      const reader = new FileReader();
+      reader.onload = async function() {
+        const base64Data = reader.result.split(',')[1];
+        const payload = {
+          empId: currentMember ? currentMember.empId : document.getElementById('empId').value.trim(),
+          name: currentMember ? currentMember.name : "",
+          utr: utr,
+          amount: amount,
+          fileName: file.name,
+          mimeType: file.type,
+          fileData: base64Data
+        };
+
+        try {
+          const resp = await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+          });
+          const result = await resp.json();
+
+          btn.disabled = false;
+          btn.innerText = "Submit Payment Proof";
+
+          if (result.success) {
+            msg.style.display = "block";
+            msg.style.color = "var(--success-text)";
+            msg.textContent = "✓ Payment proof submitted! The Treasurer will verify and reconcile your records.";
+            document.getElementById('utrNumber').value = "";
+            fileInput.value = "";
+          } else {
+            alert(result.message || "Failed to submit proof.");
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerText = "Submit Payment Proof";
+          alert("Error submitting proof. Please check internet connection.");
+        }
+      };
+
+      reader.readAsDataURL(file);
     }
 
     async function loadAnnouncements() {
