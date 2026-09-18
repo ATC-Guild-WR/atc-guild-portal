@@ -337,7 +337,7 @@
 
   <nav class="nav">
     <button class="nav-btn active" onclick="showTab('dues', this)">Dues Lookup</button>
-    <button class="nav-btn" onclick="showTab('circulars', this)">Circulars</button>
+    <button class="nav-btn" onclick="showTab('circulars', this)">Circulars & Announcements</button>
     <button class="nav-btn" onclick="showTab('desk', this)">WR Desk</button>
   </nav>
 
@@ -403,8 +403,17 @@
       </div>
     </div>
 
-    <!-- CIRCULARS TAB -->
+    <!-- CIRCULARS & ANNOUNCEMENTS TAB -->
     <div id="pane-circulars" class="tab-pane">
+      <div style="margin-bottom: 14px;">
+        <input 
+          type="text" 
+          id="circularSearchInput" 
+          placeholder="🔍 Search circulars, topics, or dates..." 
+          oninput="filterCirculars()" 
+          style="margin-bottom: 0;"
+        />
+      </div>
       <div id="circularsList">
         <p style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px;">Loading announcements...</p>
       </div>
