@@ -628,26 +628,74 @@
       reader.readAsDataURL(file);
     }
 
+    let allCirculars = [];
+
     async function loadAnnouncements() {
       const box = document.getElementById('circularsList');
       try {
         const response = await fetch(`${API_URL}?action=announcements`);
         const res = await response.json();
-        if (res.success && res.items.length > 0) {
-          box.innerHTML = res.items.map(item => `
-            <div class="item-card">
-              <span class="item-meta">${item.date}</span>
-              <h3 class="item-title">${item.title}</h3>
-              <p class="item-desc">${item.summary}</p>
-              ${item.link ? `<a class="item-link" href="${item.link}" target="_blank">View Circular ↗</a>` : ''}
-            </div>
-          `).join('');
+        if (res.success && res.items && res.items.length > 0) {
+          allCirculars = res.items;
+          renderCirculars(allCirculars);
         } else {
-          box.innerHTML = "<p style='text-align:center; color:var(--muted); font-size:13px; margin-top:20px;'>No announcements available.</p>";
+          box.innerHTML = "<p style='text-align:center; color:var(--muted); font-size:13px; margin-top:20px;'>No circulars or announcements found.</p>";
         }
       } catch(e) {
-        box.innerHTML = "<p style='text-align:center; color:red; font-size:13px; margin-top:20px;'>Could not load circulars.</p>";
+        box.innerHTML = "<p style='text-align:center; color:#dc2626; font-size:13px; margin-top:20px;'>Could not load circulars. Please check connection.</p>";
       }
+    }
+
+    function isWithinDays(dateStr, days) {
+      if (!dateStr) return false;
+      let d = new Date(dateStr);
+      if (isNaN(d.getTime())) {
+        const parts = dateStr.split(/[\/\-]/);
+        if (parts.length === 3) {
+          d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+        }
+      }
+      if (isNaN(d.getTime())) return false;
+      const diffTime = Math.abs(new Date() - d);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return diffDays <= days;
+    }
+
+    function renderCirculars(items) {
+      const box = document.getElementById('circularsList');
+      if (!items || items.length === 0) {
+        box.innerHTML = "<p style='text-align:center; color:var(--muted); font-size:13px; margin-top:20px;'>No matching announcements found.</p>";
+        return;
+      }
+
+      box.innerHTML = items.map(item => {
+        const isNew = isWithinDays(item.date, 14);
+        return `
+          <div class="circular-card">
+            <div class="circular-header">
+              <span class="circular-date">${item.date || 'Notice'}</span>
+              ${isNew ? '<span class="badge-new">NEW</span>' : ''}
+            </div>
+            <h3 class="circular-title">${item.title}</h3>
+            ${item.summary ? `<p class="circular-summary">${item.summary}</p>` : ''}
+            ${item.link ? `<a href="${item.link}" target="_blank" class="circular-action">📄 View Circular ↗</a>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterCirculars() {
+      const query = document.getElementById('circularSearchInput').value.toLowerCase().trim();
+      if (!query) {
+        renderCirculars(allCirculars);
+        return;
+      }
+      const filtered = allCirculars.filter(c => 
+        (c.title && c.title.toLowerCase().includes(query)) ||
+        (c.summary && c.summary.toLowerCase().includes(query)) ||
+        (c.date && c.date.toLowerCase().includes(query))
+      );
+      renderCirculars(filtered);
     }
 
     async function loadDesk() {
