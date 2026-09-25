@@ -447,7 +447,7 @@
         </div>
 
         <label for="empId">Employee ID</label>
-        <input type="text" id="empId" placeholder="e.g. 100452" autocomplete="off" enterkeyhint="search" inputmode="numeric" />
+        <input type="text" id="empId" placeholder="e.g. 100452" autocomplete="off" enterkeyhint="search" inputmode="numeric" onkeydown="if (event.key === 'Enter' || event.keyCode === 13) { event.preventDefault(); fetchDues(); }" />
 
         <button class="btn" id="searchBtn" onclick="fetchDues()">Check Status</button>
 
