@@ -384,6 +384,22 @@
       color: var(--muted);
       margin-top: 14px;
     }
+  .status-banner.pending {
+      background: #fef9c3;
+      color: #854d0e;
+      border: 1px solid #fde047;
+    }
+    .pending-notice {
+      background: #fffbeb;
+      border: 1px solid #fef08a;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+      color: #713f12;
+      line-height: 1.45;
+      margin-top: 14px;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -496,7 +512,7 @@
       if (tab === 'desk') loadDesk();
     }
 
-    async function fetchDues() {
+   async function fetchDues() {
       const id = document.getElementById('empId').value.trim();
       const btn = document.getElementById('searchBtn');
       const out = document.getElementById('duesOutput');
@@ -510,6 +526,10 @@
       btn.innerText = "Checking...";
       out.style.display = "none";
       document.getElementById('submitMsg').style.display = 'none';
+
+      // Clear any previous pending notice card
+      const oldNotice = document.getElementById('pendingVerificationNotice');
+      if (oldNotice) oldNotice.remove();
 
       try {
         const response = await fetch(`${API_URL}?action=dues&empId=${encodeURIComponent(id)}`);
@@ -528,7 +548,29 @@
           const cleanAmt = String(res.pendingAmount).replace(/[^0-9.]/g, '');
           const numDue = Number(cleanAmt) || 0;
 
-          if (numDue > 0) {
+          // CASE 1: Proof submitted & awaiting Treasurer verification
+          if (res.isPendingVerification) {
+            banner.className = "status-banner pending";
+            banner.textContent = "⏳ PAYMENT UNDER VERIFICATION";
+            document.getElementById('resAmount').textContent = "₹" + res.pendingAmount;
+            document.getElementById('resAmount').style.color = "#854d0e";
+            bank.style.display = "none";
+            proof.style.display = "none";
+
+            const noticeDiv = document.createElement('div');
+            noticeDiv.id = "pendingVerificationNotice";
+            noticeDiv.className = "pending-notice";
+            noticeDiv.innerHTML = `
+              <strong>Payment Proof Received:</strong><br>
+              UTR / Ref: <strong>${res.submissionDetails.utr}</strong><br>
+              Amount: <strong>₹${res.submissionDetails.amount}</strong><br>
+              Submitted On: ${res.submissionDetails.date}<br><br>
+              <em>Your payment receipt is under review by the Treasurer. Once approved, your record will update to clear automatically.</em>
+            `;
+            proof.parentNode.insertBefore(noticeDiv, proof.nextSibling);
+
+          // CASE 2: Dues outstanding, no submission yet
+          } else if (numDue > 0) {
             banner.className = "status-banner due";
             banner.textContent = "PAYMENT OUTSTANDING";
             document.getElementById('resAmount').textContent = "₹" + res.pendingAmount;
@@ -536,6 +578,8 @@
             bank.style.display = "block";
             proof.style.display = "block";
             document.getElementById('amountPaid').value = numDue;
+
+          // CASE 3: All dues clear
           } else {
             banner.className = "status-banner clear";
             banner.textContent = "✓ ALL DUES CLEAR";
