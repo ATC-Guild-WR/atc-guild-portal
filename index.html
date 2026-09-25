@@ -673,10 +673,11 @@
           if (result.success) {
             msg.style.display = "block";
             msg.style.color = "var(--success-text)";
-            msg.textContent = "✓ Payment proof submitted! The Treasurer will verify and reconcile your records.";
+            msg.textContent = "✓ Payment proof submitted! Updating status...";
             document.getElementById('utrNumber').value = "";
             fileInput.value = "";
-          } else {
+            setTimeout(() => { fetchDues(); }, 1200); // Automatically switches to Under Verification
+          }else {
             alert(result.message || "Failed to submit proof.");
           }
         } catch (err) {
