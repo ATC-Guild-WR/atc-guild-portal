@@ -624,13 +624,6 @@
         alert("Failed to load records. Please verify network connection or Employee ID.");
       }
     }
-    // Allow pressing Enter key to trigger search
-    document.getElementById('empId').addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault(); // Prevents page reload
-        fetchDues();
-      }
-    });
 
     async function submitPaymentProof() {
       const utr = document.getElementById('utrNumber').value.trim();
