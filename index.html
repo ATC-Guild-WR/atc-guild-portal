@@ -41,6 +41,7 @@
       flex-direction: column;
     }
 
+    /* Pinned Navigation */
     .nav {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
@@ -85,7 +86,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
 
-    .header { text-align: center; margin-bottom: 20px; }
+    .header { text-align: center; margin-bottom: 16px; }
     .header-logo {
       width: 76px;
       height: 76px;
@@ -107,6 +108,52 @@
       margin-top: 2px;
     }
 
+    /* Deadline Banner */
+    .deadline-banner {
+      background: #fffbeb;
+      border: 1px solid #fde047;
+      color: #854d0e;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .deadline-banner strong {
+      color: #b45309;
+      font-weight: 800;
+    }
+
+    /* ATC Day Greeting Banner */
+    .atc-day-banner {
+      background: linear-gradient(135deg, #1e3a8a, #0a2540);
+      color: #ffffff;
+      border: 1px solid #3b82f6;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      font-weight: 500;
+      text-align: center;
+      margin: 0 auto 22px auto; /* 22px clear separation above Employee ID */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+    .atc-day-banner strong {
+      color: #93c5fd;
+      font-weight: 700;
+    }
+
+    /* Form Fields */
     label {
       display: block;
       font-size: 11px;
@@ -147,6 +194,7 @@
     button.btn:hover { background: var(--primary-accent); }
     button.btn:disabled { background: var(--muted); cursor: not-allowed; }
 
+    /* Results */
     .status-banner {
       padding: 12px;
       border-radius: 8px;
@@ -165,6 +213,11 @@
       background: var(--success-bg);
       color: var(--success-text);
       border: 1px solid var(--success-border);
+    }
+    .status-banner.pending {
+      background: #fef9c3;
+      color: #854d0e;
+      border: 1px solid #fde047;
     }
 
     .data-table {
@@ -186,7 +239,19 @@
     .data-label { color: var(--muted); font-weight: 500; }
     .data-val { font-weight: 700; color: var(--text); }
 
-    /* Bank Details Card */
+    .pending-notice {
+      background: #fffbeb;
+      border: 1px solid #fef08a;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+      color: #713f12;
+      line-height: 1.45;
+      margin-top: 14px;
+      text-align: left;
+    }
+
+    /* Bank Card */
     .bank-card {
       background: #f0f9ff;
       border: 1px solid #bae6fd;
@@ -237,7 +302,7 @@
       text-align: center;
     }
 
-    /* Circulars & Announcements Polish */
+    /* Circulars */
     .circular-card {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -302,7 +367,7 @@
       color: var(--primary);
     }
 
-    /* Executive Profile Cards */
+    /* Contacts */
     .contact-card {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -384,43 +449,6 @@
       color: var(--muted);
       margin-top: 14px;
     }
-  .status-banner.pending {
-      background: #fef9c3;
-      color: #854d0e;
-      border: 1px solid #fde047;
-    }
-    .pending-notice {
-      background: #fffbeb;
-      border: 1px solid #fef08a;
-      border-radius: 8px;
-      padding: 14px;
-      font-size: 13px;
-      color: #713f12;
-      line-height: 1.45;
-      margin-top: 14px;
-      text-align: left;
-    }
-    /* Deadline Notice Banner */
-    .deadline-banner {
-      background: #fffbeb;
-      border: 1px solid #fde047;
-      color: #854d0e;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      margin: 0 auto 18px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    }
-    .deadline-banner strong {
-      color: #b45309;
-      font-weight: 800;
-    }
   </style>
 </head>
 <body>
@@ -445,11 +473,22 @@
         <div class="deadline-banner">
           ℹ️ <span>Notice: All outstanding dues to be cleared up to <strong>Sep-2026</strong>.</span>
         </div>
-<!-- BANNER WITH BUILT-IN SPACING -->        <div class="atc-day-banner">
+
+        <!-- ATC DAY GREETING BANNER -->
+        <div class="atc-day-banner">
           ✈️ <span>Wishing all Controllers a <strong>Happy International ATC Day!</strong> Clear skies & safe watches.</span>
         </div>
+
         <label for="empId">Employee ID</label>
-        <input type="text" id="empId" placeholder="e.g. 100452" autocomplete="off" enterkeyhint="search" inputmode="numeric" onkeydown="if (event.key === 'Enter' || event.keyCode === 13) { event.preventDefault(); fetchDues(); }" />
+        <input 
+          type="text" 
+          id="empId" 
+          placeholder="e.g. 100452" 
+          autocomplete="off" 
+          enterkeyhint="search" 
+          inputmode="numeric" 
+          onkeydown="if (event.key === 'Enter' || event.keyCode === 13) { event.preventDefault(); fetchDues(); }" 
+        />
 
         <button class="btn" id="searchBtn" onclick="fetchDues()">Check Status</button>
 
@@ -541,7 +580,7 @@
       if (tab === 'desk') loadDesk();
     }
 
-   async function fetchDues() {
+    async function fetchDues() {
       const id = document.getElementById('empId').value.trim();
       const btn = document.getElementById('searchBtn');
       const out = document.getElementById('duesOutput');
@@ -556,7 +595,6 @@
       out.style.display = "none";
       document.getElementById('submitMsg').style.display = 'none';
 
-      // Clear any previous pending notice card
       const oldNotice = document.getElementById('pendingVerificationNotice');
       if (oldNotice) oldNotice.remove();
 
@@ -577,7 +615,6 @@
           const cleanAmt = String(res.pendingAmount).replace(/[^0-9.]/g, '');
           const numDue = Number(cleanAmt) || 0;
 
-          // CASE 1: Proof submitted & awaiting Treasurer verification
           if (res.isPendingVerification) {
             banner.className = "status-banner pending";
             banner.textContent = "⏳ PAYMENT UNDER VERIFICATION";
@@ -598,7 +635,6 @@
             `;
             proof.parentNode.insertBefore(noticeDiv, proof.nextSibling);
 
-          // CASE 2: Dues outstanding, no submission yet
           } else if (numDue > 0) {
             banner.className = "status-banner due";
             banner.textContent = "PAYMENT OUTSTANDING";
@@ -608,7 +644,6 @@
             proof.style.display = "block";
             document.getElementById('amountPaid').value = numDue;
 
-          // CASE 3: All dues clear
           } else {
             banner.className = "status-banner clear";
             banner.textContent = "✓ ALL DUES CLEAR";
@@ -678,8 +713,8 @@
             msg.textContent = "✓ Payment proof submitted! Updating status...";
             document.getElementById('utrNumber').value = "";
             fileInput.value = "";
-            setTimeout(() => { fetchDues(); }, 1200); // Automatically switches to Under Verification
-          }else {
+            setTimeout(() => { fetchDues(); }, 1200);
+          } else {
             alert(result.message || "Failed to submit proof.");
           }
         } catch (err) {
