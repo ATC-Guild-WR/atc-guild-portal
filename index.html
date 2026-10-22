@@ -1,1254 +1,3 @@
-
-Gemini
-
-New chat
-Library
-Images
-Scheduled
-Students
-
-More
-New notebook
-ATC Guild WR
-Personal Development
-Best and Cheapest Ways to Get Excel on Mac
-Jio Platforms IPO Multi-Application Guide
-Copying Bulk Email Addresses on Phone
-Scooty Insurance Renewal Guide
-Car Insurance Renewal Guide
-WSO Office Furniture Specifications
-Health Insurance Guide for AAI Employees
-Pixel BBD Sale Buying Guide
-Best B12 Supplements for Women
-Causes of Elevated Alkaline Phosphatase
-India’s Thorium Nuclear Energy Strategy
-SIP Analysis and Recommendations
-Delicious Ways to Eat Pumpkin Seeds
-Best D3 K2 Supplement Guide
-HDFC Bank Investment Analysis and Strategy
-HDFC Bank Stock Analysis and Risks
-Man Demonstrates Multitasking Skills
-Choosing Tax Filing Option Based On Income
-Guide to Filing Income Tax Return
-Oceanic Contingency Procedures for Pilots
-Ready For Your Questions
-Compile Photos to PDF Guide
-Build English Learning App With Gemini
-Private Space Rocket Launch Successes Fact-Checked
-Blood Pressure Reading Interpretation
-As the prices of sd cards have increased drastically, i need to purchase one for my CP PLUS CCTV outdoor camera. Find a cheap but useful card that works for me. Can it be 64 GB?
-Fast Memorization Techniques for Exams
-Conversation with Gemini
-I DELETED FEW TABS BY MISTAKE, I ADDED THEM AGAIN
-
-HOWEVER IN RECONCILATION TAB THE FORMATTING BUTTON OF 3 CATEGORIES DIDNT COME AFTER PASTING IT
-
-When a tab is deleted and recreated, Google Sheets wipes out the Data Validation (Dropdown Chips) and Conditional Formatting.
-
-Those "formatting buttons" are Google Sheets Dropdown Chips for the 3 status categories: Pending, Approved, and Rejected.
-
-Here is how to bring them back in under 60 seconds:
-
-Step-by-Step: Restore the 3 Status Dropdown Buttons
-Open your Reconciliation tab.
-
-Click on the header of Column G (or highlight cells G2:G).
-
-In the top menu, click Data → Data validation (or right-click the selected column and choose Dropdown).
-
-In the Data Validation sidebar that opens on the right, click + Add rule.
-
-Under Criteria, select Dropdown and add the 3 categories:
-
-Category 1: Type Pending ➔ Click the circle next to it and select Light Gray or Yellow.
-
-Category 2: Type Approved ➔ Select Green.
-
-Category 3: Click + Add another item, type Rejected ➔ Select Red.
-
-Click Advanced options at the bottom of the sidebar:
-
-Under Display style, make sure Chip is selected (this gives it the clickable button/pill appearance).
-
-Click Done.
-
-Verify Column Alignment
-Because your automated backend (Code.gs) listens to specific columns, make sure your header row in Reconciliation matches this exact order:
-
-Col A	Col B	Col C	Col D	Col E	Col F	Col G	Col H
-Timestamp	Employee ID	Name	UTR Number	Amount Paid	Screenshot Link	Status (Dropdown)	Remarks
-Once restored, selecting Approved from the green dropdown chip will trigger your script to update Master_Roster and timestamp Column H automatically.
-
-as the date 29 sep has passed i want to remove that notice from first page of dues link. and add something else you can suggest like Dues To Be Cleared till Sep-2026
-
-Here are three clean wording options for the updated banner, followed by the exact lines to change in your GitHub repository.
-
-Suggested Notice Options
-Option 1 (Direct & Clear — Recommended):
-
-ℹ️ Notice: All outstanding dues to be cleared up to Sep-2026.
-
-Option 2 (Routine Accounting):
-
-📢 Reminder: Membership dues payable up to Sep-2026 (@ ₹150/month).
-
-Option 3 (Gentle Follow-up):
-
-⚠️ Notice: Please verify and clear pending dues up to Sep-2026.
-
-How to Update index.html on GitHub
-Open your repository on GitHub and click index.html.
-
-Click the Pencil icon (Edit) at the top right.
-
-Press Ctrl + F (or Cmd + F on Mac) and locate this line:
-
-HTML
-        <!-- DEADLINE NOTICE BANNER -->
-        <div class="deadline-banner">
-          ⚠️ <span>Notice: Dues to be cleared by <strong>29th Sep 2026</strong>.</span>
-        </div>
-Replace it with your chosen message (using Option 1 as an example):
-
-HTML
-        <!-- DUES PERIOD BANNER -->
-        <div class="deadline-banner">
-          ℹ️ <span>Notice: All outstanding dues to be cleared up to <strong>Sep-2026</strong>.</span>
-        </div>
-Click Commit changes... at the top right.
-
-Wait 30–45 seconds for GitHub Pages to refresh, then hard-refresh (Cmd + Shift + R or Ctrl + F5) the portal in your browser.
-
-okay done
-
-Your portal is now updated with the revised period notice.
-
-Here is a quick checklist of what is running live:
-
-Notice Banner: Cleanly reflects dues clearance up to Sep-2026.
-
-Dues Lookup & Verification: Members entering their Employee ID will see their exact balance or active verification status.
-
-Auto-Reconciliation: Any submissions approved with Approved in Reconciliation will advance dates in Master_Roster by ₹150/month increments in MMM-YY format.
-
-Let me know if you would like to run a test verification, review the Reconciliation queue, or move ahead with a refreshed WhatsApp broadcast message.
-
-Due to some issue the sheet has 2 Reconciliation tabs (2nd & 5th)
-
-And any new data is being popultaed in 2nd one
-
-Google Sheets does not allow two tabs with the exact same name, so one of them has a hidden space (e.g., "Reconciliation " vs "Reconciliation"). Because your backend script (Code.gs) looks for getSheetByName("Reconciliation"), it is actively locking onto the 2nd tab.
-
-If the 5th tab is just sitting there holding older records or your formatting, you have fragmented data. Consolidate them back into a single clean tab following these steps:
-
-Step 1: Check What is in the 5th Tab
-Open the 5th tab.
-
-If it contains older payment submissions that are not present in the 2nd tab:
-
-Highlight those data rows (starting from row 2).
-
-Copy them (Ctrl + C or Cmd + C).
-
-Go to the 2nd tab, scroll down below the newest rows, and paste them (Ctrl + V or Cmd + V).
-
-Step 2: Delete the Redundant 5th Tab
-Once any older records are copied over to the 2nd tab, right-click the 5th tab's name at the bottom of the screen.
-
-Select Delete and confirm.
-(Now you have only one Reconciliation tab).
-
-Step 3: Ensure the Active Tab Name Has No Trailing Spaces
-Double-click the tab name of your remaining Reconciliation tab (the 2nd tab).
-
-Delete the name and type:
-
-Plaintext
-Reconciliation
-(Be careful not to add a space at the end or beginning, then hit Enter).
-
-Step 4: Ensure Dropdowns and Formatting are on This Tab
-Since this 2nd tab is the active one receiving live portal uploads:
-
-Check Headers (Row 1): Ensure columns A through H match:
-
-A: Timestamp
-
-B: Employee ID
-
-C: Name
-
-D: UTR Number
-
-E: Amount Paid
-
-F: Screenshot Link
-
-G: Status
-
-H: Remarks / Audit Timestamp
-
-Apply Status Dropdown Chips to Column G:
-
-Highlight cells G2:G.
-
-Go to Data → Data validation → + Add rule.
-
-Set Criteria to Dropdown:
-
-Pending (Gray/Yellow)
-
-Approved (Green)
-
-Rejected (Red)
-
-Under Advanced options, set Display style to Chip and click Done.
-
-Why This Resolves the Problem
-Live Uploads: doPost in your Web App will continue appending new portal submissions directly to this single Reconciliation tab without confusion.
-
-Auto-Reconciliation: When you change Column G to Approved, onEdit checks sheetName === "Reconciliation", deducts the dues in Master_Roster, advances the date by ₹150/month increments, and stamps Column H cleanly.
-
-Sheet 2 and Sheet 3
-
-Looking at the two sheets, here is exactly what is happening:
-
-2nd Tab (Image 1): This is where your live web portal is currently dumping new incoming submissions from October 5th & 6th. It has 5 new records, but it is missing your dropdown chips and Column H is labeled Remarks.
-
-5th Tab (Image 2): This is your original historical tab containing 19 reconciled records (from September up to Oct 2nd) with the green Approved chips and Processed At audit timestamps already set up.
-
-Critical Notice: Duplicate Submission in the 2nd Tab
-In the 2nd tab (Image 1), Anand Babu P (Emp ID 10024024) submitted the exact same UTR (821035223415) and Amount (₹1800) 3 times between 11:49 and 11:56.
-
-Do not approve all 3 rows. If you approve all three, the script will deduct ₹5,400 (36 months) instead of ₹1,800 (12 months). Keep one row and delete (or reject) the other two.
-
-The 2-Minute Merge & Fix
-Because the 5th tab already has the dropdown chips and correct Column H structure, the cleanest fix is to move the new rows into the 5th tab and delete the unformatted 2nd tab:
-
-Step 1: Copy New Submissions to the 5th Tab
-Open the 2nd tab.
-
-Select cells A2:F6 (the 5 new rows) and copy them (Ctrl + C or Cmd + C).
-
-Switch to the 5th tab (the one with the green chips).
-
-Click cell A21 (the first empty row under Bharat Prasad) and paste (Ctrl + V or Cmd + V).
-
-In Column G for those new rows, use the dropdown chip to select Pending.
-
-Delete the two duplicate rows for Anand Babu P so he only appears once.
-
-Step 2: Delete the 2nd Tab
-Right-click the 2nd tab's name at the bottom of the screen.
-
-Click Delete and confirm.
-
-Step 3: Rename the 5th Tab
-Double-click the remaining tab's name (which will now be the only one).
-
-Delete whatever is there and type:
-
-Plaintext
-Reconciliation
-(Ensure there is no space before or after the name).
-
-Press Enter.
-
-Why This Fixes Everything
-No split data: All historical approvals and new pending receipts are in one continuous sheet.
-
-Backend target locked: Because the single remaining sheet is named exactly Reconciliation, Google Apps Script will append all future portal uploads directly below Row 24.
-
-Dropdowns preserved: You keep the pre-configured green Approved / Pending chips without needing to rebuild data validation rules. When you select Approved, onEdit will run, advance Master_Roster by ₹150/month, and stamp the date in Column H (Processed At).
-
-the date column is rigged
-
-Jun-27 is 6/27/2027 , and so on
-
-Google Sheets has an automatic date parser that causes this issue.
-
-Because your membership years (24, 25, 26, 27) fall between 1 and 31, Google Sheets assumes you are typing a calendar day, not a year. When it sees Jun-27, it interprets it as June 27th and saves it internally as a full calendar timestamp (6/27/2027).
-
-When the web portal or script reads that cell, instead of getting the clean text "JUN-27", it receives a raw Date timestamp (Sun Jun 27 2027 00:00:00 GMT...), throwing off both the portal display and subsequent month calculations.
-
-Step 1: Run the One-Click Cleanup Script
-This script scans Column C in Master_Roster, extracts the intended month and year from the corrupted dates, and writes them back locked as Plain Text with a hidden leading apostrophe ('JUN-27) so Google Sheets cannot convert them back.
-
-Open your Google Sheet.
-
-Go to Extensions → Apps Script.
-
-Paste this function at the bottom of Code.gs:
-
-JavaScript
-// ====================================================
-// ONE-TIME FIX FOR RIGGED / CORRUPTED DATE COLUMN
-// ====================================================
-function fixRiggedDateColumn() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("Master_Roster");
-  if (!sheet) {
-    SpreadsheetApp.getActiveSpreadsheet().toast("Master_Roster tab not found!", "Error", 5);
-    return;
-  }
-
-  const lastRow = sheet.getLastRow();
-  if (lastRow < 2) return;
-
-  // Column C (Dues Paid Upto): Col index 3, starting from row 2
-  const range = sheet.getRange(2, 3, lastRow - 1, 1);
-  const values = range.getValues();
-  const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-  // Force Google Sheets to treat the column as Plain Text
-  range.setNumberFormat('@');
-
-  const cleanedValues = values.map(row => {
-    const val = row[0];
-    if (!val) return [""];
-
-    let month = 8; // Default fallback to SEP
-    let year = "26";
-
-    if (val instanceof Date && !isNaN(val.getTime())) {
-      month = val.getMonth(); // 0 = JAN, 5 = JUN, etc.
-      // If Sheets converted Jun-27 into 6/27/2027, getFullYear() gives 2027
-      year = String(val.getFullYear()).slice(-2);
-    } else if (typeof val === "number" && val > 30000) {
-      // Handles numeric date serial numbers (e.g. 46566)
-      const d = new Date(Math.round((val - 25569) * 86400 * 1000));
-      month = d.getMonth();
-      year = String(d.getFullYear()).slice(-2);
-    } else {
-      const str = String(val).trim().toUpperCase();
-      // Matches standard date strings like "6/27/2027" or "27/06/2027"
-      const dateParts = str.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-      if (dateParts) {
-        const m = parseInt(dateParts[1], 10);
-        const y = parseInt(dateParts[3], 10);
-        if (m >= 1 && m <= 12) {
-          month = m - 1;
-          year = String(y).slice(-2);
-        }
-      } else {
-        // Matches text like "JUN-27" or "SEP 26"
-        const textParts = str.match(/([A-Z]{3})[-/\s]*(\d{2,4})/);
-        if (textParts) {
-          const idx = MONTHS.indexOf(textParts[1]);
-          if (idx !== -1) month = idx;
-          year = String(textParts[2]).slice(-2);
-        }
-      }
-    }
-
-    const cleanDateStr = `${MONTHS[month]}-${year}`;
-    // The apostrophe (') prevents Google Sheets from auto-converting it to a date
-    return ["'" + cleanDateStr];
-  });
-
-  range.setValues(cleanedValues);
-  SpreadsheetApp.getActiveSpreadsheet().toast("Column C successfully fixed into clean MMM-YY text!", "Success", 5);
-}
-Click the Save icon (disk symbol).
-
-In the toolbar function dropdown at the top, select fixRiggedDateColumn and click Run.
-
-Grant permissions if prompted.
-
-Step 2: Lock Column C to Plain Text in Google Sheets
-To prevent Google Sheets from re-converting manual entries in the future:
-
-Return to your Master_Roster tab.
-
-Click the header of Column C to highlight the entire column.
-
-In the top Google Sheets menu, click Format → Number → Plain text.
-
-Verification
-Click on any cell in Column C (such as a row that previously showed 6/27/2027).
-
-Look at the Formula Bar at the top: it will now display JUN-27 (not 6/27/2027).
-
-Run a quick search on the web portal with that Employee ID: Dues Paid Upto will cleanly display JUN-27.
-
-i need only month and year nothing else
-
-To make Google Sheets display strictly the Month and Year (e.g., JUN-27 or SEP-26) with no days or timestamps, use either of the two methods below.
-
-Method 1: Apply Custom Number Format in Google Sheets (Fastest)
-If your cells currently contain date values like 6/27/2027:
-
-Highlight Column C in your sheet.
-
-In the top menu, click Format ➔ Number ➔ Custom date and time.
-
-In the box at the top, delete the existing tags (like Day, Year, etc.).
-
-Click the dropdown arrow in the field and select:
-
-Month (click it and choose Month abbreviation like Aug)
-
-Type a hyphen -
-
-Year (click it and choose Two-digit year like 30)
-
-Alternatively, go to Format ➔ Number ➔ Custom number format and paste:
-
-Plaintext
-mmm-yy
-Click Apply.
-
-Verification: The entire column will immediately render as Jun-27, Sep-26, etc., hiding all calendar days.
-
-Method 2: Lock as Plain Text (Prevents Day Re-interpretation)
-If Google Sheets misinterprets the year 27 or 26 as the 27th or 26th day of the month when you type:
-
-Highlight Column C.
-
-Click Format ➔ Number ➔ Plain text.
-
-When typing manually, enter a single apostrophe before the text:
-
-Plaintext
-'JUN-27
-(The ' is invisible in the cell, forcing Sheets to store it strictly as text and preventing it from adding days or converting to numbers).
-
-In Google Apps Script (Code.gs)
-If your script updates this column automatically on reconciliation approval, ensure it writes the date locked as plain text:
-
-JavaScript
-// Sets cell format to Plain Text and writes only MONTH-YY
-const targetCell = rosterSheet.getRange(row, 3);
-targetCell.setNumberFormat('@');
-targetCell.setValue("'JUN-27"); // or 'SEP-26'
-where should i add the email ids for future reference and any modifications
-
-Depending on which emails you need to store or modify, add them to the corresponding tab in your Google Sheet:
-
-1. General Member Email IDs (For Dues Reminders & Broadcasts)
-Location: Master_Roster tab ➔ Column E (Email).
-
-Layout:
-
-Column A: Employee ID
-
-Column B: Name
-
-Column C: Dues Paid Upto
-
-Column D: Pending Amount
-
-Column E: Email ID
-
-
-Column F: Last Reminder Sent (timestamp generated during email dispatches)
-
-Future Modifications: If a member changes or updates their email address, update the cell directly in Column E for their Employee ID row. Both the Apps Script batch dispatcher and Gmail’s native Mail Merge read directly from this column.
-
-2. Regional Committee / Desk Emails (Shown on the Portal's "WR Desk" Tab)
-Location: Desk tab.
-
-Layout:
-
-Contains the official executive profiles (Post, Name, Phone, Email, and Photo Link).
-
-Future Modifications: If an office-bearer changes or an email changes, update the email in this tab. The portal's frontend calls ?action=desk and updates the clickable ✉️ Email button automatically without requiring code changes in GitHub.
-
-3. Station Representatives / Branch Contacts (From the Google Form)
-Location: The Google Form responses sheet (the directory register for WR airports).
-
-Layout:
-
-Column F: Secretary AAI Email
-
-Column J: Treasurer Email
-
-Column N: Alternate POC Email
-
-Future Modifications: Edit the respective cell in the response sheet whenever a local branch conducts elections or changes station representatives.
-
-ADDED AAI EMAIL IN E AND GMAIL IN F
-
-WANT TO ADD REMARKS COLUMN SO THAT IT DOES NOT AFFECT THE CODE WHENEVR I ENTER A REMARK
-
-You can safely add Remarks in Column G (right next to Gmail). Entering, editing, or deleting text in Column G will never affect or break your code.
-
-Recommended Layout for Master_Roster
-Col A (1)	Col B (2)	Col C (3)	Col D (4)	Col E (5)	Col F (6)	Col G (7)	Col H (8)
-Employee ID	Name	Dues Paid Upto	Pending Amount	AAI Email	Gmail	Remarks	(Reserved: Last Reminder Sent)
-Why Column G Will Never Break the System
-The Portal Lookup (doGet) Ignores Everything After Column D:
-
-When members check their status on GitHub Pages, the script only reads array indices 0 to 3 (Columns A, B, C, and D).
-
-Columns E, F, G, and beyond are completely ignored by the web portal.
-
-Treasurer Auto-Reconciliation (onEdit) Ignores This Sheet Entirely:
-
-The approval script has a strict safeguard:
-
-JavaScript
-if (sheetName === "Reconciliation" && col === 7 && row > 1)
-It only triggers when you edit Column G inside the Reconciliation tab. Typing remarks in Column G of Master_Roster will never trigger the reconciliation code.
-
-When the script updates member dues, it targets Column C (getRange(r + 1, 3)) and Column D (getRange(r + 1, 4)), leaving Columns E, F, and G untouched.
-
-One Quick Note on the Standby Email Dispatcher
-If you send emails manually via Gmail BCC, you don't need to change anything.
-
-However, if you ever run the automated batch reminder from the top spreadsheet menu (ATC Guild WR ➔ Send Reminders):
-
-The original script expected a single email in Column E and stamped the delivery date in Column F.
-
-With AAI Email in E, Gmail in F, and Remarks in G, let me know if you want the automated reminder updated to prefer AAI or Gmail, and we can shift the Last Reminder Sent timestamp to Column H.
-
-OK ADDING FREE TEXT REMARK COLUMN FOR MY USE IN G
-
-Adding a free text Remarks column in Column G of Master_Roster is completely safe.
-
-Why Column G is completely isolated:
-Web Portal (Dues Lookup): The public portal only queries and displays data from Columns A to D (Emp ID, Name, Paid Upto, Pending Amount). It completely ignores Column E onward.
-
-Auto-Reconciliation Trigger (onEdit): The automated reconciliation script only monitors edits made inside the Reconciliation tab. When it updates Master_Roster, it writes strictly to Column C (Dues Paid Upto) and Column D (Pending Amount).
-
-Payment Submissions: Incoming portal submissions and screenshots bypass Master_Roster entirely and append directly to Reconciliation.
-
-Quick Tip for Formatting in Sheets
-Since remarks can vary in length, you may want to set Text wrapping for Column G so long notes don't spill across the sheet:
-
-Click the header of Column G.
-
-Go to Format ➔ Wrapping ➔ Clip (or Wrap if you prefer multi-line rows).
-
-You can now freely enter notes, transfer references, or follow-up details in Column G without any risk of breaking the portal or backend automation.
-
-i want to correct date format
-
-To fix the date format in your sheet so it strictly displays Month-Year (e.g., JUN-27 or SEP-26) with no days or timestamps, use either of the methods below depending on how you prefer to fix it:
-
-Option 1: Quick Fix via Google Sheets Menu (Takes 10 Seconds)
-If your cells currently show dates like 6/27/2027 or 27/06/2027:
-
-Open your Google Sheet and go to the Master_Roster tab.
-
-Click the letter C at the very top to select the entire Column C (Dues Paid Upto).
-
-In the top toolbar menu, click:Format ➔ Number ➔ Custom number format
-
-In the text box at the top, delete whatever is there and paste:
-
-Plaintext
-mmm-yy
-Click Apply.
-
-Result: The entire column will immediately change from 6/27/2027 to Jun-27, hiding all calendar days.
-
-Option 2: Run the One-Click Apps Script (Permanent Plain-Text Fix)
-Google Sheets often misinterprets typed entries like Jun-27 as the 27th day of June instead of the year 2027. Running this one-time cleanup script extracts the month and year, locks Column C to Plain Text, and prefixes each entry with ' so Google Sheets can never turn it into a calendar date again.
-
-In your Google Sheet, click Extensions ➔ Apps Script.
-
-Paste this function at the bottom of Code.gs:
-
-JavaScript
-function fixAllDatesToMonthYear() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("Master_Roster");
-  if (!sheet) return SpreadsheetApp.getActiveSpreadsheet().toast("Master_Roster not found!", "Error", 5);
-
-  const lastRow = sheet.getLastRow();
-  if (lastRow < 2) return;
-
-  const range = sheet.getRange(2, 3, lastRow - 1, 1); // Column C
-  const values = range.getValues();
-  const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-  // Lock column to Plain Text
-  range.setNumberFormat('@');
-
-  const cleaned = values.map(row => {
-    const val = row[0];
-    if (!val) return [""];
-
-    let month = 8; // Default SEP
-    let year = "26";
-
-    if (val instanceof Date && !isNaN(val.getTime())) {
-      month = val.getMonth();
-      year = String(val.getFullYear()).slice(-2);
-    } else if (typeof val === "number" && val > 30000) {
-      // Handles Sheets serial numbers
-      const d = new Date(Math.round((val - 25569) * 86400 * 1000));
-      month = d.getMonth();
-      year = String(d.getFullYear()).slice(-2);
-    } else {
-      const str = String(val).trim().toUpperCase();
-      // Match "6/27/2027" or "27/06/2027"
-      const matchSlash = str.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-      if (matchSlash) {
-        const m = parseInt(matchSlash[1], 10);
-        const y = parseInt(matchSlash[3], 10);
-        if (m >= 1 && m <= 12) {
-          month = m - 1;
-          year = String(y).slice(-2);
-        }
-      } else {
-        // Match "JUN-27", "SEP 26", etc.
-        const matchText = str.match(/([A-Z]{3})[-/\s]*(\d{2,4})/);
-        if (matchText) {
-          const idx = MONTHS.indexOf(matchText[1]);
-          if (idx !== -1) month = idx;
-          year = String(matchText[2]).slice(-2);
-        }
-      }
-    }
-
-    return ["'" + MONTHS[month] + "-" + year];
-  });
-
-  range.setValues(cleaned);
-  SpreadsheetApp.getActiveSpreadsheet().toast("Column C successfully normalized to MMM-YY!", "Success", 5);
-}
-Click Save (disk icon).
-
-In the function dropdown at the top, select fixAllDatesToMonthYear and click Run.
-
-All dates in Column C will instantly convert into clean strings like JUN-27 or SEP-26.
-
-Option 3: If You Meant Another Sheet or Column
-If you were trying to format a different column, let me know:
-
-Reconciliation Column A or H: Timestamps (e.g., dd/MM/yyyy HH:mm)
-
-Announcements Column A: Circular notice dates (e.g., DD/MM/YYYY)
-
-i have changed the format of date cells to custom "month-year" however it shows while clicking the date as well at the top not just month and yeart
-
-In Google Sheets, Number Formatting is only a visual "mask."
-
-Even if the cell displays Jun-27, the underlying value stored in the sheet is still a full calendar date (e.g., 27/06/2027 or 6/27/2027). The Formula Bar (fx) at the top always shows the raw underlying data, which is why clicking the cell reveals the day and full date.
-
-To make the cell strictly Month and Year everywhere (including in the formula bar when you click it), the cells must be stored as Plain Text, not Date objects.
-
-Here are the two ways to convert them:
-
-Method 1: The 30-Second Spreadsheet Fix (No Code)
-Go to an empty column in Master_Roster (for example, Column H or I).
-
-In row 2 (e.g., cell H2), paste this formula:
-
-Excel
-=UPPER(TEXT(C2, "mmm-yy"))
-Double-click the tiny blue square at the bottom-right corner of cell H2 to fill the formula down to the bottom of the list.
-
-You will see clean text values like JUN-27, SEP-26, etc.
-
-Highlight all those generated cells in Column H and press Copy (Ctrl + C or Cmd + C).
-
-Select Column C (click the letter C header at the top).
-
-In the top menu, click Format ➔ Number ➔ Plain text.
-
-Right-click cell C2 and select Paste special ➔ Values only (or press Ctrl + Shift + V / Cmd + Shift + V).
-
-Delete the temporary formula column (Column H).
-
-Verification: Click any cell in Column C now. The formula bar (fx) at the top will strictly display JUN-27 or SEP-26 without any day or calendar timestamp.
-
-Method 2: Run a One-Click Apps Script
-If you prefer doing it automatically across all rows:
-
-In your sheet, click Extensions ➔ Apps Script.
-
-Paste this function at the bottom of Code.gs:
-
-JavaScript
-function convertColumnCToPureText() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("Master_Roster");
-  if (!sheet) return;
-
-  const lastRow = sheet.getLastRow();
-  if (lastRow < 2) return;
-
-  const range = sheet.getRange(2, 3, lastRow - 1, 1); // Column C
-  const values = range.getValues();
-  const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-  // Force Plain Text format
-  range.setNumberFormat('@');
-
-  const textRows = values.map(row => {
-    const val = row[0];
-    if (!val) return [""];
-
-    let month = 8; // Default SEP
-    let year = "26";
-
-    if (val instanceof Date && !isNaN(val.getTime())) {
-      month = val.getMonth();
-      year = String(val.getFullYear()).slice(-2);
-    } else if (typeof val === "number" && val > 30000) {
-      const d = new Date(Math.round((val - 25569) * 86400 * 1000));
-      month = d.getMonth();
-      year = String(d.getFullYear()).slice(-2);
-    } else {
-      const str = String(val).trim().toUpperCase();
-      const matchText = str.match(/([A-Z]{3})[-/\s]*(\d{2,4})/);
-      if (matchText) {
-        const idx = MONTHS.indexOf(matchText[1]);
-        if (idx !== -1) month = idx;
-        year = String(matchText[2]).slice(-2);
-      } else {
-        const matchDate = str.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-        if (matchDate) {
-          const m = parseInt(matchDate[1], 10);
-          const y = parseInt(matchDate[3], 10);
-          if (m >= 1 && m <= 12) {
-            month = m - 1;
-            year = String(y).slice(-2);
-          }
-        }
-      }
-    }
-
-    // Leading apostrophe locks it as true literal text in the formula bar
-    return ["'" + MONTHS[month] + "-" + year];
-  });
-
-  range.setValues(textRows);
-  SpreadsheetApp.getActiveSpreadsheet().toast("Column C converted to pure Month-Year text!", "Success", 5);
-}
-Click Save (disk icon).
-
-In the top function dropdown, select convertColumnCToPureText and click Run.
-
-Once completed, the cells will be converted to literal text strings, so the formula bar at the top will only show the month and year.
-
-disregard this i will keep full date in
-
-Understood. Keeping standard full dates in Google Sheets is standard practice and avoids fighting Sheets' automatic date engine.
-
-With standard dates in Column C (Dues Paid Upto):
-
-Clean Visual Display in Sheets: Applying the custom format (mmm-yy or Format ➔ Number ➔ Custom date and time) ensures the cell visually displays as Jun-27 or Sep-26, even if clicking it reveals the underlying calendar date in the top formula bar (fx).
-
-Web Portal Compatibility: The portal's lookup engine reads the cell data cleanly and displays the member's current paid-up date without errors.
-
-Automated Reconciliation (onEdit): When you mark a payment as Approved in the Reconciliation tab, the date calculation engine automatically recognizes standard Google Sheets Date objects and advances the date by the exact number of months (
-₹150/month).
-
-Everything is set up and aligned across the sheet, backend script, and portal.
-
-ok so dates fixed.
-
-now i want conditional formatting color.
-
-aug-26 or less some color
-
-sep-26 some other
-
-oct-26 or more other
-
-Since your cells contain full dates formatted as Month-Year, the most reliable way to highlight them is using Custom formulas with DATE(year, month, day). This ensures that regardless of the specific day inside the month (whether 1st, 26th, or 31st), every date in that month is styled consistently.
-
-A classic issue in Google Sheets is that blank cells are treated as day 0 (December 1899), which can mistakenly turn empty rows red. The formulas below include a check (C2<>"") to prevent that.
-
-Step-by-Step Setup
-Open your Master_Roster tab.
-
-Select cells C2:C (click cell C2, then press Ctrl + Shift + Down / Cmd + Shift + Down, or type C2:C in the range box).
-
-In the top menu, go to Format ➔ Conditional formatting.
-
-In the sidebar on the right, click + Add another rule for each of the 3 categories below:
-
-Rule 1: Aug-26 or less (Overdue / Past Dues)
-Apply to range: C2:C
-
-Format rules (dropdown): Choose Custom formula is
-
-Value or formula:
-
-Excel
-=AND(C2<>"", C2 <= DATE(2026, 8, 31))
-Formatting style: Fill color Light Red (Text color: Dark Red)
-
-Click Done.
-
-Rule 2: Sep-26 (Target Clearance Period)
-Click + Add another rule
-
-Apply to range: C2:C
-
-Format rules (dropdown): Choose Custom formula is
-
-Value or formula:
-
-Excel
-=AND(C2 >= DATE(2026, 9, 1), C2 <= DATE(2026, 9, 30))
-Formatting style: Fill color Light Yellow (Text color: Dark Brown/Amber)
-
-Click Done.
-
-Rule 3: Oct-26 or more (Advance Paid / Clear)
-Click + Add another rule
-
-Apply to range: C2:C
-
-Format rules (dropdown): Choose Custom formula is
-
-Value or formula:
-
-Excel
-=C2 >= DATE(2026, 10, 1)
-Formatting style: Fill color Light Green (Text color: Dark Green)
-
-Click Done.
-
-How to Highlight the Entire Row (Optional)
-If you prefer the entire row (Columns A through G) to change color instead of just the date cell in Column C:
-
-Change Apply to range on all three rules to A2:G.
-
-Add a $ before C in each formula:
-
-Red: =AND($C2<>"", $C2 <= DATE(2026, 8, 31))
-
-Yellow: =AND($C2 >= DATE(2026, 9, 1), $C2 <= DATE(2026, 9, 30))
-
-Green: =$C2 >= DATE(2026, 10, 1)
-
-The colors are showing properly across all rows.
-
-The visual color-coding in your Master_Roster is now fully active:
-
-🔴 Light Red (<= Aug-26): Members with overdue subscriptions.
-
-🟡 Light Yellow (Sep-26): Target clearance threshold.
-
-🟢 Light Green (>= Oct-26): Advance payments / fully cleared.
-
-Because the conditional formatting is dynamic, whenever you set a record to Approved in the Reconciliation tab, the script will reduce the pending balance, advance Column C by the exact number of months (
-₹150/month), and the row's color will automatically shift (e.g., from Red or Yellow into Green) without any manual reformatting.
-
-Everything across the portal, Google Sheets database, and backend triggers is aligned and production-ready.
-
-Give me a quick operational summary of the entire portal and sheet setup.
-
-1. Frontend Architecture (GitHub Pages)
-The member-facing portal is hosted on GitHub Pages via a single responsive HTML file (index.html) organized into three navigation tabs:   
-PNG
-
-Dues Lookup Tab:
-
-Allows members to query their dues status by entering their Employee ID using either mobile or desktop Enter/Return key listeners.   
-PNG
-
-Displays a prominent clearance banner reminding members that dues are payable up to Sep-2026.   
-PNG
-
-Displays one of three operational states:
-
-✓ ALL DUES CLEAR (Green): Rendered when pending dues equal zero.   
-PNG
-
-PAYMENT OUTSTANDING (Red): Displays the pending dues, provides official Guild bank transfer credentials (A/C: 85990100000989, IFSC: BARB0VJAPMU), and opens the submission form for 12-digit UTR numbers and receipt screenshot uploads.   
-PNG
-
-⏳ PAYMENT UNDER VERIFICATION (Amber): Displays the submitted UTR, amount transferred, and submission timestamp while locking out duplicate uploads until reviewed.   
-PNG
-
-Automatically refreshes after a 1.2-second delay upon payment submission to immediately display the verification card.   
-PNG
-
-Circulars & Announcements Tab: Pulls regional notices and circulars dynamically from Google Sheets with built-in keyword search filtering and automatic "NEW" badges for recent items.   
-PNG
-
-WR Desk Tab: Displays executive committee profiles with direct, clickable WhatsApp, phone call, and email links.   
-PNG
-
-2. Google Sheets Database Schema
-The backend spreadsheet (Master_Roster_V2_Dev) is structured across dedicated tabs:
-
-Master_Roster (Member Database)
-Column	Header	Type / Purpose
-Col A	Employee ID	Primary key (numeric text) matched by the lookup and reconciliation scripts.
-Col B	Name	Member full name.
-Col C	Dues Paid Upto	Formatted as mmm-yy (e.g., Sep-26, Jun-27). Controlled by conditional formatting rules.
-Col D	Pending Amount	Numeric balance remaining to be cleared.
-Col E	AAI Email	
-Official AAI email address for administrative notices and broadcasts.
-
-Col F	Gmail	
-Personal email address for backup communication.
-
-Col G	Remarks	Free-text field for administrative notes (isolated from automation triggers).
-Column C Conditional Formatting Rules:
-
-🔴 Light Red: <= DATE(2026, 8, 31) (Dues overdue / paid up to Aug-26 or earlier).
-
-🟡 Light Yellow: DATE(2026, 9, 1) to DATE(2026, 9, 30) (Threshold month / paid up to Sep-26).
-
-🟢 Light Green: >= DATE(2026, 10, 1) (Advance paid / paid up to Oct-26 or later).
-
-Reconciliation (Treasurer Approval Queue)
-Column	Header	Type / Purpose
-Col A	Timestamp	
-Date and time when the member submitted proof through the web portal. 
-PNG
-
-Col B	Employee ID	
-Member Employee ID. 
-PNG
-
-Col C	Name	
-Member Name. 
-PNG
-
-Col D	UTR Number	
-12-digit transaction reference. 
-PNG
-
-Col E	Amount Paid	Numerical amount transferred (₹).
-Col F	Screenshot Link	
-Direct Google Drive view link to the uploaded payment proof. 
-PNG
-
-Col G	Status	Interactive dropdown chip: Pending (Gray), Approved (Green), Rejected (Red).
-Col H	Processed At	Automated audit timestamp (dd/MM/yyyy HH:mm) populated upon approval.
-Auxiliary Tabs
-Announcements: Feeds circular titles, dates, summaries, and PDF links to the portal.   
-PNG
-
-Desk: Feeds executive committee designations, names, contact numbers, and avatars.   
-PNG
-
-3. Backend Automation (Code.gs)
-Google Apps Script operates as a published Web App managing read, write, and reconciliation operations:
-
-Data Retrieval (doGet): Serves action=dues, action=announcements, and action=desk queries triggered by the frontend. It cross-references Reconciliation to flag unapproved submissions with isPendingVerification: true.   
-PNG
-+ 1
-
-Proof Uploads (doPost): Converts Base64-encoded screenshots from the portal into Drive image files within the Guild_Payment_Proofs folder and appends the record to Reconciliation with Pending status.   
-PNG
-
-Treasurer Approval Engine (onEdit):
-
-Listens exclusively to edits in Column G of the Reconciliation sheet.
-
-When set to Approved:
-
-Checks Column H to ensure the row has not already been processed, preventing duplicate deductions.
-
-Reads the payment amount strictly from Column E (Amount Paid), bypassing the UTR string in Column D.
-
-Calculates months to add at the fixed rate of ₹150 / month (
-⌊Amount/150⌋).
-
-Deducts the amount from Column D (Pending Amount) in Master_Roster (floored at zero).
-
-Advances Column C (Dues Paid Upto) by the exact number of months.
-
-Automatically updates the row's visual conditional formatting in Master_Roster.
-
-Stamps the current date and time in Column H (Processed At) and turns the cell green.
-
-4. Communications & Outreach Channels
-Direct Web Broadcasts: For periodic member reminders, emails can be dispatched via Gmail BCC in safe batches of up to 200 recipients to remain within standard web delivery guidelines.
-
-Station Directory: A linked Google Form collects verified points of contact (Branch Secretary, Treasurer, alternate POC) across all WR airports for regional coordination.
-
-Would you like to draft a targeted email reminder for members whose records are currently highlighted in red?
-
-how to improve the interface more appealing and better
-
-To make your portal look significantly more appealing, modern, and authoritative (like a polished aviation or fintech web app), you don't need a complete rewrite. You can dramatically elevate the user experience through five targeted UI upgrades:
-
-1. Typography & Elevation (Instant Premium Feel)
-Current look: System font (sans-serif), standard flat gray borders (#cbd5e1), and basic shadows.
-
-Upgrade:
-
-Load Plus Jakarta Sans or Inter (the modern standard for professional web apps).
-
-Use subtle layered shadows (box-shadow: 0 10px 25px -5px rgba(10, 37, 64, 0.06), 0 8px 10px -6px rgba(10, 37, 64, 0.04)) to make cards feel floating and crisp.
-
-Add a subtle top brand bar (navy/indigo gradient accent) along the very top of the screen.
-
-HTML
-<!-- Add this in <head> for the modern font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-2. Modern Segmented Tab Navigation (iOS / macOS Style)
-Current look: Flat buttons with bottom underline border sticking to top.
-
-Upgrade: An iOS-style floating pill switch. The active tab slides into a crisp white pill with a soft shadow over a light-gray background capsule:
-
-CSS
-/* Upgraded Floating Segmented Controller */
-.nav-container {
-  display: flex;
-  background: #e2e8f0;
-  padding: 4px;
-  border-radius: 12px;
-  margin: 16px auto 8px auto;
-  max-width: 460px;
-  width: 92%;
-}
-.nav-btn {
-  flex: 1;
-  background: transparent;
-  border: none;
-  padding: 9px 6px;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #64748b;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: center;
-}
-.nav-btn.active {
-  background: #ffffff;
-  color: #0a2540;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-3. Redesigned Dues Status Cards (Card-based Metric Design)
-Instead of a plain HTML table, format the member lookup output like a sleek digital receipt card:
-
-Member Badge: Prominent initials circle or avatar badge.
-
-Metric Cards: Two side-by-side cards:
-
-Left: Paid Upto (with a calendar icon).
-
-Right: Pending Amount (large bold rupee figure with high-contrast color).
-
-Pulse / Shimmer Loading: Instead of changing button text to "Checking...", show a sleek spinning loader on the button with smooth hover & press physics (active: scale(0.98)).
-
-CSS
-/* Sleek 2-Column Summary Cards */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 16px 0;
-}
-.metric-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 12px 14px;
-  text-align: left;
-}
-.metric-box .label {
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-}
-.metric-box .val {
-  font-size: 17px;
-  font-weight: 800;
-  color: #0f172a;
-  margin-top: 4px;
-}
-4. Custom Drag-and-Drop Screenshot Upload Box
-Current look: Default browser <input type="file"> which looks clunky, especially on mobile.
-
-Upgrade: A stylized tap-to-upload box with a camera/cloud icon, dashed blue border, and immediate visual preview of the selected image name:
-
-HTML
-<!-- Modern Tap-to-Upload Box -->
-<label class="custom-file-upload" for="proofScreenshot">
-  <div class="upload-icon">📷</div>
-  <div class="upload-text">
-    <strong id="uploadLabelText">Tap to upload receipt screenshot</strong>
-    <span>Supports PNG, JPG (Max 5MB)</span>
-  </div>
-  <input type="file" id="proofScreenshot" accept="image/*" style="display:none;" onchange="updateFileName(this)" />
-</label>
-CSS
-.custom-file-upload {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  border: 2px dashed #93c5fd;
-  border-radius: 10px;
-  background: #f8fafc;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-bottom: 16px;
-}
-.custom-file-upload:hover {
-  background: #eff6ff;
-  border-color: #3b82f6;
-}
-.upload-icon {
-  font-size: 24px;
-}
-.upload-text strong {
-  display: block;
-  font-size: 13px;
-  color: #1e3a8a;
-}
-.upload-text span {
-  font-size: 11px;
-  color: #64748b;
-}
-5. Bank Account "Quick-Pay" Card
-Transform the bank details box into a stylized account passbook card:
-
-Give it a distinct gradient accent or light banking watermark.
-
-Add an animated checkmark icon when "Copy" is clicked (e.g., changes to green ✓ Copied! with haptic feel).
-
-Comparison of the Upgrade:
-Section	Current Portal	Upgraded Experience
-Font	
-Standard OS system font
-
-Plus Jakarta Sans (clean, crisp, modern tech feel)
-Tabs	
-Simple underline links
-
-Segmented Pill Controller (iOS / Apple native feel)
-Lookup Results	
-Plain table format
-
-Dual metric cards with large, clear badge indicators
-File Upload	
-Raw HTML file selector
-
-Dashed upload dropzone with camera icon & image name preview
-Copy Account	
-Basic small button
-
-Pill copy tag with animated green feedback
-Would you like me to provide the complete, updated index.html file incorporating all these design upgrades while keeping your existing Google Apps Script API endpoints and logic completely intact?
-
-yes
-
-Your HTML file is ready
-
-HTML icon
-index
- HTML 
-What Was Upgraded in This Design
-Modern Typography & Elevation:
-
-Embedded Plus Jakarta Sans (the design standard for modern fintech and aviation apps) with high legibility on mobile and desktop displays.
-
-Added soft layered elevation shadows (--shadow-md, --shadow-lg) and a top brand gradient bar.
-
-iOS-Style Segmented Navigation:
-
-Replaced the flat underline tabs with an iOS-style floating segmented controller. The active tab slides smoothly into a crisp white pill with soft depth.
-
-Dual Metric Cards (Card Dashboard):
-
-Replaced the plain HTML data table with a dedicated Member Header (showing Name and Employee ID badge) and two side-by-side Metric Dashboard Cards:
-
-📅 Dues Paid Upto (e.g., Sep-26, Jun-27)
-
-💰 Balance Due (bold high-contrast rupee display or green Nil)
-
-Stylized Bank Passbook Card:
-
-Styled the Guild account transfer details with a light banking passbook gradient (#f0fdf4 to #dcfce7).
-
-Clicking Copy provides immediate tactile feedback: the button turns green and displays ✓ Copied! before resetting after 1.5s.
-
-Custom Drag & Tap Receipt Upload Dropzone:
-
-Replaced the raw browser file input with a custom dashed upload box (📷 Tap to select receipt image).
-
-When a member selects an image, the label dynamically displays ✓ <filename> along with the file size in KB.
-
-Tactile Button Physics:
-
-Added smooth micro-interactions (active: scale(0.985)) and spinning loading states (⏳ Checking Records...) so members know their query is processing.
-
-100% Backend & Logic Compatibility:
-
-Your Google Apps Script Web App URL (AKfycbwFRTzDmp3_...), Base64 screenshot upload handler, isPendingVerification lockouts, Enter key listeners, and circulars/desk fetchers remain fully intact and operational.
-
-How to Update on GitHub Pages
-Open your repository on GitHub and click index.html.
-
-Click the Pencil (Edit) icon at the top right.
-
-Select all existing code (Ctrl + A or Cmd + A) and delete it.
-
-Copy the complete code from the generated file above and paste it in.
-
-Click Commit changes... at the top right.
-
-Wait 30–60 seconds for GitHub Pages to complete the build, then open your portal in an Incognito / Private tab (or press Ctrl + F5 / Cmd + Shift + R) to preview the new interface.
-
-copied and pasted.
-
-before commiting want to add bank name also "Bank Of Baroda"
-
-Your file has been updated with Bank of Baroda included.
-
-HTML icon
-index
- HTML 
-If You Are Already in the GitHub Editor
-Search for <!-- Bank Account Passbook Card --> (around line 240) and replace that block with:
-
-HTML
-          <!-- Bank Account Passbook Card -->
-          <div id="bankSection" class="bank-card" style="display: none;">
-            <div class="bank-card-title">🏦 Bank Transfer Details (IMPS / NEFT)</div>
-            <div class="bank-row">
-              <span>Bank Name</span>
-              <strong>Bank of Baroda</strong>
-            </div>
-            <div class="bank-row">
-              <span>Account Name</span>
-              <strong>ATC GUILD INDIA</strong>
-            </div>
-            <div class="bank-row">
-              <span>Account Number</span>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <strong id="accNum">85990100000989</strong>
-                <button class="copy-btn" onclick="copyText('accNum', this)">Copy</button>
-              </div>
-            </div>
-            <div class="bank-row">
-              <span>IFSC Code</span>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <strong id="ifscCode">BARB0VJAPMU</strong>
-                <button class="copy-btn" onclick="copyText('ifscCode', this)">Copy</button>
-              </div>
-            </div>
-          </div>
-How to Complete the Commit
-Make sure the snippet above is updated (or select all and replace with the generated file).
-
-Click the green Commit changes... button at the top right of your GitHub repository.
-
-Wait 30–45 seconds for GitHub Pages to complete the automated build.
-
-Open the portal in an Incognito / Private tab (or press Ctrl + F5 / Cmd + Shift + R) to preview the updated bank card and modern UI.
-
-
-
-
-
-Gemini is AI and can make mistakes.
-
-Convert chat to PDF
-Convert chat to PDF
-Open this chat in Acrobat
-Adding bank name to the statement
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1265,7 +14,7 @@ Adding bank name to the statement
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0a2540">
 
-  <!-- Google Fonts: Plus Jakarta Sans for a clean, modern aesthetic -->
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1282,7 +31,6 @@ Adding bank name to the statement
       --border: #e2e8f0;
       --border-focus: #3b82f6;
 
-      /* Status Palettes */
       --success-bg: #ecfdf5;
       --success-border: #a7f3d0;
       --success-text: #065f46;
@@ -1295,7 +43,6 @@ Adding bank name to the statement
       --warning-border: #fef08a;
       --warning-text: #854d0e;
 
-      /* Elevation Shadows */
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
       --shadow-lg: 0 12px 28px -6px rgba(15, 23, 42, 0.09), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
@@ -1318,7 +65,6 @@ Adding bank name to the statement
       line-height: 1.5;
     }
 
-    /* Top Brand Accent Stripe */
     .top-accent-bar {
       height: 4px;
       background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
@@ -1328,7 +74,6 @@ Adding bank name to the statement
       z-index: 110;
     }
 
-    /* iOS-Style Segmented Navigation */
     .nav-wrapper {
       position: sticky;
       top: 4px;
@@ -1378,7 +123,6 @@ Adding bank name to the statement
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
     }
 
-    /* Layout Container */
     .container {
       max-width: 480px;
       width: 100%;
@@ -1398,7 +142,6 @@ Adding bank name to the statement
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Primary Card */
     .card {
       background: var(--card-bg);
       border-radius: 18px;
@@ -1407,7 +150,6 @@ Adding bank name to the statement
       box-shadow: var(--shadow-md);
     }
 
-    /* Header Profile */
     .header {
       text-align: center;
       margin-bottom: 20px;
@@ -1450,7 +192,6 @@ Adding bank name to the statement
       letter-spacing: 0.2px;
     }
 
-    /* Modern Notice Banners */
     .deadline-banner {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
       border: 1px solid #fde68a;
@@ -1494,7 +235,6 @@ Adding bank name to the statement
       font-weight: 700;
     }
 
-    /* Form Inputs */
     label {
       display: block;
       font-size: 11px;
@@ -1529,7 +269,6 @@ Adding bank name to the statement
       box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.12);
     }
 
-    /* Buttons with tactile feedback */
     button.btn {
       width: 100%;
       background: linear-gradient(135deg, #0a2540 0%, #1e40af 100%);
@@ -1566,7 +305,6 @@ Adding bank name to the statement
       transform: none;
     }
 
-    /* Modern Status Banners */
     .status-banner {
       padding: 11px 14px;
       border-radius: 10px;
@@ -1599,7 +337,6 @@ Adding bank name to the statement
       border: 1px solid var(--warning-border);
     }
 
-    /* Member Overview Header */
     .member-header-card {
       background: #f8fafc;
       border: 1px solid var(--border);
@@ -1631,7 +368,6 @@ Adding bank name to the statement
       margin-top: 3px;
     }
 
-    /* Metric Grid (2-Column Dashboard Cards) */
     .metrics-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1672,7 +408,6 @@ Adding bank name to the statement
       color: #16a34a;
     }
 
-    /* Sleek Bank Passbook Card */
     .bank-card {
       background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
       border: 1px solid #bbf7d0;
@@ -1725,7 +460,6 @@ Adding bank name to the statement
       transform: scale(0.96);
     }
 
-    /* UTR Submission Form */
     .proof-card {
       background: #ffffff;
       border: 1.5px dashed #93c5fd;
@@ -1749,7 +483,6 @@ Adding bank name to the statement
       gap: 6px;
     }
 
-    /* Stylized Drag & Tap Upload Box */
     .custom-file-box {
       border: 1.5px dashed #cbd5e1;
       border-radius: 10px;
@@ -1787,7 +520,6 @@ Adding bank name to the statement
       color: var(--text-muted);
     }
 
-    /* Pending Verification Notice */
     .pending-notice {
       background: #fffbeb;
       border: 1px solid #fef08a;
@@ -1808,7 +540,6 @@ Adding bank name to the statement
       line-height: 1.4;
     }
 
-    /* Circulars Board */
     .search-wrapper {
       position: relative;
       margin-bottom: 14px;
@@ -1890,7 +621,6 @@ Adding bank name to the statement
       color: var(--primary);
     }
 
-    /* Executive Contacts (WR Desk) */
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -1986,7 +716,7 @@ Adding bank name to the statement
   <!-- Top Accent Bar -->
   <div class="top-accent-bar"></div>
 
-  <!-- Segmented Floating Navigation Bar -->
+  <!-- Segmented Navigation Bar -->
   <div class="nav-wrapper">
     <nav class="nav-segmented">
       <button class="nav-btn active" onclick="showTab('dues', this)">💳 Dues Lookup</button>
@@ -2022,7 +752,7 @@ Adding bank name to the statement
           <input 
             type="text" 
             id="empId" 
-            placeholder="Enter your 6 or 8-digit Employee ID" 
+            placeholder="Enter your Employee ID" 
             autocomplete="off" 
             enterkeyhint="search" 
             inputmode="numeric" 
@@ -2038,7 +768,6 @@ Adding bank name to the statement
         <div id="duesOutput" style="display: none; margin-top: 18px;">
           <div id="statusBanner" class="status-banner"></div>
           
-          <!-- Modern Member Header -->
           <div class="member-header-card">
             <div class="member-info-left">
               <span class="member-name" id="resName">--</span>
@@ -2046,7 +775,6 @@ Adding bank name to the statement
             </div>
           </div>
 
-          <!-- Dual Metric Dashboard Cards -->
           <div class="metrics-grid">
             <div class="metric-card">
               <span class="metric-label">📅 Dues Paid Upto</span>
@@ -2085,7 +813,7 @@ Adding bank name to the statement
             </div>
           </div>
 
-          <!-- Stylized Proof Submission Form -->
+          <!-- Proof Submission Form -->
           <div id="proofSection" class="proof-card" style="display: none;">
             <div class="proof-card-title">📤 Submit Payment Proof</div>
             
@@ -2155,300 +883,4 @@ Adding bank name to the statement
 
     function handleFileSelect(input) {
       const label = document.getElementById('uploadLabel');
-      const sub = document.getElementById('uploadSubLabel');
-      if (input.files && input.files.length > 0) {
-        label.textContent = "✓ " + input.files[0].name;
-        label.style.color = "#16a34a";
-        sub.textContent = `${(input.files[0].size / 1024).toFixed(1)} KB selected`;
-      } else {
-        label.textContent = "Tap to select receipt image";
-        label.style.color = "var(--primary-accent)";
-        sub.textContent = "Supports PNG, JPG (Max 5MB)";
-      }
-    }
-
-    async function fetchDues() {
-      const id = document.getElementById('empId').value.trim();
-      const btn = document.getElementById('searchBtn');
-      const out = document.getElementById('duesOutput');
-      const banner = document.getElementById('statusBanner');
-      const bank = document.getElementById('bankSection');
-      const proof = document.getElementById('proofSection');
-
-      if (!id) return alert('Please enter your Employee ID');
-
-      btn.disabled = true;
-      btn.innerHTML = "<span>⏳</span> Checking Records...";
-      out.style.display = "none";
-      document.getElementById('submitMsg').style.display = 'none';
-
-      // Clear any previous pending notice card
-      const oldNotice = document.getElementById('pendingVerificationNotice');
-      if (oldNotice) oldNotice.remove();
-
-      try {
-        const response = await fetch(`${API_URL}?action=dues&empId=${encodeURIComponent(id)}`);
-        const res = await response.json();
-
-        btn.disabled = false;
-        btn.innerHTML = "<span>🔍</span> Check Dues Status";
-
-        if (res.success) {
-          currentMember = res;
-          out.style.display = "block";
-          document.getElementById('resName').textContent = res.name;
-          document.getElementById('resId').textContent = res.empId;
-          document.getElementById('resPaidTill').textContent = res.paidTill || "N/A";
-
-          const cleanAmt = String(res.pendingAmount).replace(/[^0-9.]/g, '');
-          const numDue = Number(cleanAmt) || 0;
-          const amtElem = document.getElementById('resAmount');
-
-          if (res.isPendingVerification) {
-            banner.className = "status-banner pending";
-            banner.innerHTML = "⏳ PAYMENT UNDER VERIFICATION";
-            amtElem.textContent = "₹" + res.pendingAmount;
-            amtElem.className = "metric-value";
-            amtElem.style.color = "#854d0e";
-            bank.style.display = "none";
-            proof.style.display = "none";
-
-            const noticeDiv = document.createElement('div');
-            noticeDiv.id = "pendingVerificationNotice";
-            noticeDiv.className = "pending-notice";
-            noticeDiv.innerHTML = `
-              <strong>✓ Payment Proof Received</strong><br>
-              UTR / Ref: <strong>${res.submissionDetails.utr}</strong><br>
-              Amount: <strong>₹${res.submissionDetails.amount}</strong><br>
-              Submitted On: ${res.submissionDetails.date}<br><br>
-              <em>Your payment receipt is under review by the Treasurer. Once approved, your record will update to clear automatically.</em>
-            `;
-            proof.parentNode.insertBefore(noticeDiv, proof.nextSibling);
-
-          } else if (numDue > 0) {
-            banner.className = "status-banner due";
-            banner.innerHTML = "⚠️ PAYMENT OUTSTANDING";
-            amtElem.textContent = "₹" + res.pendingAmount;
-            amtElem.className = "metric-value due";
-            amtElem.style.color = "";
-            bank.style.display = "block";
-            proof.style.display = "block";
-            document.getElementById('amountPaid').value = numDue;
-
-          } else {
-            banner.className = "status-banner clear";
-            banner.innerHTML = "✓ ALL DUES CLEAR";
-            amtElem.textContent = "Nil";
-            amtElem.className = "metric-value clear";
-            amtElem.style.color = "";
-            bank.style.display = "none";
-            proof.style.display = "none";
-          }
-        } else {
-          alert(res.message);
-        }
-      } catch (e) {
-        btn.disabled = false;
-        btn.innerHTML = "<span>🔍</span> Check Dues Status";
-        alert("Failed to load records. Please verify network connection or Employee ID.");
-      }
-    }
-
-    async function submitPaymentProof() {
-      const utr = document.getElementById('utrNumber').value.trim();
-      const amount = document.getElementById('amountPaid').value.trim();
-      const fileInput = document.getElementById('proofScreenshot');
-      const btn = document.getElementById('submitProofBtn');
-      const msg = document.getElementById('submitMsg');
-
-      if (!utr) return alert("Please enter the 12-digit UTR or Transaction Reference number.");
-      if (!amount) return alert("Please enter the amount paid.");
-      if (!fileInput.files || fileInput.files.length === 0) {
-        return alert("Please select a screenshot of the payment receipt.");
-      }
-
-      const file = fileInput.files[0];
-      if (file.size > 5 * 1024 * 1024) {
-        return alert("File is too large. Please upload an image under 5 MB.");
-      }
-
-      btn.disabled = true;
-      btn.innerHTML = "<span>⏳</span> Uploading Proof...";
-      msg.style.display = "none";
-
-      const reader = new FileReader();
-      reader.onload = async function() {
-        const base64Data = reader.result.split(',')[1];
-        const payload = {
-          empId: currentMember ? currentMember.empId : document.getElementById('empId').value.trim(),
-          name: currentMember ? currentMember.name : "",
-          utr: utr,
-          amount: amount,
-          fileName: file.name,
-          mimeType: file.type,
-          fileData: base64Data
-        };
-
-        try {
-          const resp = await fetch(API_URL, {
-            method: 'POST',
-            body: JSON.stringify(payload)
-          });
-          const result = await resp.json();
-
-          btn.disabled = false;
-          btn.innerHTML = "<span>✓</span> Submit Payment Proof";
-
-          if (result.success) {
-            msg.style.display = "block";
-            msg.style.color = "var(--success-text)";
-            msg.textContent = "✓ Payment proof submitted! Updating status...";
-            document.getElementById('utrNumber').value = "";
-            fileInput.value = "";
-            document.getElementById('uploadLabel').textContent = "Tap to select receipt image";
-            document.getElementById('uploadLabel').style.color = "var(--primary-accent)";
-            document.getElementById('uploadSubLabel').textContent = "Supports PNG, JPG (Max 5MB)";
-            setTimeout(() => { fetchDues(); }, 1200);
-          } else {
-            alert(result.message || "Failed to submit proof.");
-          }
-        } catch (err) {
-          btn.disabled = false;
-          btn.innerHTML = "<span>✓</span> Submit Payment Proof";
-          alert("Error submitting proof. Please check internet connection.");
-        }
-      };
-
-      reader.readAsDataURL(file);
-    }
-
-    async function loadAnnouncements() {
-      const box = document.getElementById('circularsList');
-      try {
-        const response = await fetch(`${API_URL}?action=announcements`);
-        const res = await response.json();
-        if (res.success && res.items && res.items.length > 0) {
-          allCirculars = res.items;
-          renderCirculars(allCirculars);
-        } else {
-          box.innerHTML = "<p style='text-align:center; color:var(--text-muted); font-size:13px; margin-top:20px;'>No circulars or announcements found.</p>";
-        }
-      } catch(e) {
-        box.innerHTML = "<p style='text-align:center; color:#dc2626; font-size:13px; margin-top:20px;'>Could not load circulars. Please check connection.</p>";
-      }
-    }
-
-    function isWithinDays(dateStr, days) {
-      if (!dateStr) return false;
-      let d = new Date(dateStr);
-      if (isNaN(d.getTime())) {
-        const parts = dateStr.split(/[\/\-]/);
-        if (parts.length === 3) {
-          d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
-        }
-      }
-      if (isNaN(d.getTime())) return false;
-      const diffTime = Math.abs(new Date() - d);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      return diffDays <= days;
-    }
-
-    function renderCirculars(items) {
-      const box = document.getElementById('circularsList');
-      if (!items || items.length === 0) {
-        box.innerHTML = "<p style='text-align:center; color:var(--text-muted); font-size:13px; margin-top:20px;'>No matching announcements found.</p>";
-        return;
-      }
-
-      box.innerHTML = items.map(item => {
-        const isNew = isWithinDays(item.date, 14);
-        return `
-          <div class="circular-card">
-            <div class="circular-header">
-              <span class="circular-date">${item.date || 'Notice'}</span>
-              ${isNew ? '<span class="badge-new">NEW</span>' : ''}
-            </div>
-            <h3 class="circular-title">${item.title}</h3>
-            ${item.summary ? `<p class="circular-summary">${item.summary}</p>` : ''}
-            ${item.link ? `<a href="${item.link}" target="_blank" class="circular-action">📄 View Circular ↗</a>` : ''}
-          </div>
-        `;
-      }).join('');
-    }
-
-    function filterCirculars() {
-      const query = document.getElementById('circularSearchInput').value.toLowerCase().trim();
-      if (!query) {
-        renderCirculars(allCirculars);
-        return;
-      }
-      const filtered = allCirculars.filter(c => 
-        (c.title && c.title.toLowerCase().includes(query)) ||
-        (c.summary && c.summary.toLowerCase().includes(query)) ||
-        (c.date && c.date.toLowerCase().includes(query))
-      );
-      renderCirculars(filtered);
-    }
-
-    async function loadDesk() {
-      const box = document.getElementById('deskList');
-      try {
-        const response = await fetch(`${API_URL}?action=desk`);
-        const res = await response.json();
-        if (res.success && res.items && res.items.length > 0) {
-          box.innerHTML = res.items.map(item => {
-            const initials = item.name ? item.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'WR';
-            const cleanPhone = item.phone ? item.phone.replace(/[^0-9]/g, '') : '';
-            
-            const avatarHtml = item.photo 
-              ? `<img src="${item.photo}" alt="${item.name}" class="contact-avatar" onerror="this.outerHTML='<div class=\'contact-placeholder\'>${initials}</div>'">`
-              : `<div class="contact-placeholder">${initials}</div>`;
-
-            const callBtn = cleanPhone ? `<a href="tel:+91${cleanPhone}" class="action-pill action-call">📞 Call</a>` : '';
-            const waBtn = cleanPhone ? `<a href="https://wa.me/91${cleanPhone}" target="_blank" class="action-pill action-wa">💬 WhatsApp</a>` : '';
-            const emailBtn = item.email ? `<a href="mailto:${item.email}" class="action-pill action-email">✉️ Email</a>` : '';
-
-            return `
-              <div class="contact-card">
-                ${avatarHtml}
-                <div class="contact-details">
-                  ${item.post ? `<span class="contact-role-badge">${item.post}</span>` : ''}
-                  <div class="contact-name">${item.name}</div>
-                  <div class="contact-actions">
-                    ${callBtn}
-                    ${waBtn}
-                    ${emailBtn}
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join('');
-        } else {
-          box.innerHTML = "<p style='text-align:center; color:var(--text-muted); font-size:13px; margin-top:20px;'>No desk contacts listed.</p>";
-        }
-      } catch(e) {
-        box.innerHTML = "<p style='text-align:center; color:red; font-size:13px; margin-top:20px;'>Could not load desk contacts.</p>";
-      }
-    }
-
-    function copyText(id, btn) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const old = btn.innerText;
-        btn.innerText = "✓ Copied!";
-        btn.style.background = "#dcfce7";
-        btn.style.color = "#166534";
-        btn.style.borderColor = "#86efac";
-        setTimeout(() => {
-          btn.innerText = old;
-          btn.style.background = "";
-          btn.style.color = "";
-          btn.style.borderColor = "";
-        }, 1500);
-      });
-    }
-  </script>
-</body>
-</html>
-index.html
-Displaying index.html.
+      const sub = document.getElementById
