@@ -14,7 +14,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0a2540">
 
-  <!-- Diagnostics -->
+  <!-- Immediate Error Diagnostics -->
   <script>
     window.onerror = function(msg, url, line) {
       alert("Portal Error on line " + line + ": " + msg);
@@ -142,7 +142,7 @@
       flex-direction: column;
     }
 
-    /* Centers the dues lookup card when there is vertical room; scrolls normally when expanded */
+    /* Centers the dues card on initial load; collapses for clean scrolling when expanded */
     #pane-dues {
       margin: auto 0;
       width: 100%;
@@ -1011,7 +1011,7 @@
           btn.disabled = false;
           btn.innerHTML = "<span>🔍</span> Check Dues Status";
         }
-        alert("Failed to load records. Please verify network connection or Employee ID.");
+        alert("Failed to load records. Please verify network connection or Employee ID. (Error: " + e.message + ")");
       }
     }
 
@@ -1167,7 +1167,7 @@
             var cleanPhone = item.phone ? item.phone.replace(/[^0-9]/g, '') : '';
             
             var avatarHtml = item.photo 
-              ? '<img src="' + item.photo + '" alt="' + item.name + '" class="contact-avatar" onerror="this.outerHTML=\'<div class=\\\'contact-placeholder\\\'>' + initials + '</div>\'">'
+              ? '<img src="' + item.photo + '" alt="' + item.name + '" class="contact-avatar" onerror="this.onerror=null;this.src=\'https://placehold.co/58x58?text=' + initials + '\'">'
               : '<div class="contact-placeholder">' + initials + '</div>';
 
             var callBtn = cleanPhone ? '<a href="tel:+91' + cleanPhone + '" class="action-pill action-call">📞 Call</a>' : '';
@@ -1185,7 +1185,7 @@
                     callBtn +
                     waBtn +
                     emailBtn +
-                  </div>' +
+                  '</div>' +
                 '</div>' +
               '</div>'
             );
