@@ -967,7 +967,7 @@
           if (res.isPendingVerification) {
             banner.className = "status-banner pending";
             banner.innerHTML = "⏳ PAYMENT UNDER VERIFICATION";
-            amtElem.textContent = "₹" + res.pendingAmount;
+            amtElem.textContent = "₹" + numDue.toLocaleString('en-IN');
             amtElem.className = "metric-value";
             amtElem.style.color = "#854d0e";
             if (bank) bank.style.display = "none";
@@ -987,7 +987,7 @@
           } else if (numDue > 0) {
             banner.className = "status-banner due";
             banner.innerHTML = "⚠️ PAYMENT OUTSTANDING";
-            amtElem.textContent = "₹" + res.pendingAmount;
+            amtElem.textContent = "₹" + numDue.toLocaleString('en-IN');
             amtElem.className = "metric-value due";
             amtElem.style.color = "";
             if (bank) bank.style.display = "block";
