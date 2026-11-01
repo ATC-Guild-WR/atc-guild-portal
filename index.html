@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ATC Guild (India) - WR Portal</title>
+  <title>ATC Guild (India) — WR Portal</title>
 
   <!-- Favicon & Mobile App Icons -->
   <link rel="icon" type="image/jpeg" href="3ebb9976-128a-49ce-a2a3-711bb2c45110.jpg">
@@ -11,27 +11,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ATC Guild WR">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#0a2540">
+  <meta name="theme-color" content="#071b2f">
 
-  <!-- Immediate Error Diagnostics -->
-  <script>
-    window.onerror = function(msg, url, line) {
-      alert("Portal Error on line " + line + ": " + msg);
-      return false;
-    };
-  </script>
-
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #0a2540;
-      --primary-accent: #1d4ed8;
-      --primary-light: #eff6ff;
+      --primary: #071b2f;
+      --primary-accent: #2563eb;
+      --primary-hover: #1d4ed8;
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --text-main: #0f172a;
@@ -39,21 +30,21 @@
       --border: #e2e8f0;
       --border-focus: #3b82f6;
 
-      --success-bg: #ecfdf5;
-      --success-border: #a7f3d0;
-      --success-text: #065f46;
+      --success-bg: #f0fdf4;
+      --success-border: #bbf7d0;
+      --success-text: #15803d;
 
       --danger-bg: #fef2f2;
       --danger-border: #fecaca;
-      --danger-text: #991b1b;
+      --danger-text: #b91c1c;
 
       --warning-bg: #fffbeb;
       --warning-border: #fef08a;
       --warning-text: #854d0e;
 
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 12px 28px -6px rgba(15, 23, 42, 0.09), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+      --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.12);
     }
 
     * {
@@ -66,6 +57,8 @@
 
     body {
       background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -75,20 +68,20 @@
 
     .top-accent-bar {
       height: 4px;
-      background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+      background: linear-gradient(90deg, #071b2f 0%, #2563eb 50%, #60a5fa 100%);
       width: 100%;
       position: sticky;
       top: 0;
-      z-index: 110;
+      z-index: 120;
     }
 
     .nav-wrapper {
       position: sticky;
       top: 4px;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(226, 232, 240, 0.8);
       padding: 10px 16px;
       display: flex;
@@ -99,39 +92,36 @@
       display: flex;
       background: #f1f5f9;
       padding: 4px;
-      border-radius: 12px;
+      border-radius: 14px;
       width: 100%;
       max-width: 480px;
-      gap: 3px;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+      gap: 4px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     .nav-btn {
       flex: 1;
       background: transparent;
       border: none;
-      padding: 9px 8px;
-      font-size: 11.5px;
+      padding: 10px 8px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.3px;
       color: var(--text-muted);
-      border-radius: 9px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      text-align: center;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .nav-btn.active {
       background: #ffffff;
       color: var(--primary);
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
     }
 
-    /* Flex container for vertical centering */
     .container {
       max-width: 480px;
       width: 100%;
@@ -142,7 +132,6 @@
       flex-direction: column;
     }
 
-    /* Centers the dues card on initial load; collapses for clean scrolling when expanded */
     #pane-dues {
       margin: auto 0;
       width: 100%;
@@ -151,38 +140,44 @@
     .tab-pane { display: none; }
     .tab-pane.active {
       display: block;
-      animation: fadeIn 0.25s ease-out;
+      animation: tabFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 18px;
-      padding: 24px 20px;
-      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px 22px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
       box-shadow: var(--shadow-md);
+      position: relative;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .header-logo-wrap {
-      width: 80px;
-      height: 80px;
+      width: 82px;
+      height: 82px;
       margin: 0 auto 12px auto;
       border-radius: 50%;
       padding: 3px;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      box-shadow: 0 4px 14px rgba(30, 58, 138, 0.18);
+      background: linear-gradient(135deg, #071b2f, #2563eb);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.25s ease;
+    }
+
+    .header-logo-wrap:hover {
+      transform: scale(1.03);
     }
 
     .header-logo {
@@ -194,27 +189,27 @@
     }
 
     .header h1 {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--primary);
-      letter-spacing: -0.3px;
-      line-height: 1.3;
+      letter-spacing: -0.4px;
+      line-height: 1.25;
     }
 
     .header h2 {
       font-size: 12.5px;
       font-weight: 600;
       color: var(--text-muted);
-      margin-top: 3px;
+      margin-top: 4px;
       letter-spacing: 0.2px;
     }
 
     .deadline-banner {
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-      border: 1px solid #fde68a;
+      background: #fffbeb;
+      border: 1px solid #fef08a;
       color: #92400e;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 11px 14px;
+      border-radius: 12px;
       font-size: 12.5px;
       font-weight: 600;
       text-align: center;
@@ -222,9 +217,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      box-shadow: var(--shadow-sm);
+      gap: 8px;
     }
+
     .deadline-banner strong {
       color: #78350f;
       font-weight: 800;
@@ -247,9 +242,9 @@
 
     input[type="text"], input[type="file"], input[type="number"] {
       width: 100%;
-      padding: 12px 14px;
+      padding: 13px 15px;
       border: 1.5px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 14.5px;
       font-weight: 500;
       outline: none;
@@ -261,31 +256,32 @@
     input[type="text"]:focus, input[type="number"]:focus {
       border-color: var(--border-focus);
       background: #ffffff;
-      box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.12);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
     }
 
     button.btn {
       width: 100%;
-      background: linear-gradient(135deg, #0a2540 0%, #1e40af 100%);
+      background: linear-gradient(135deg, #071b2f 0%, #1e40af 100%);
       color: #ffffff;
       border: none;
-      padding: 13.5px;
-      border-radius: 10px;
+      padding: 14px;
+      border-radius: 12px;
       font-weight: 700;
-      font-size: 13.5px;
-      letter-spacing: 0.4px;
+      font-size: 14px;
+      letter-spacing: 0.3px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 4px 12px rgba(10, 37, 64, 0.15);
+      box-shadow: 0 4px 14px rgba(7, 27, 47, 0.15);
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     button.btn:hover {
-      background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
-      box-shadow: 0 6px 16px rgba(10, 37, 64, 0.2);
+      background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+      box-shadow: 0 6px 18px rgba(7, 27, 47, 0.22);
+      transform: translateY(-1px);
     }
 
     button.btn:active {
@@ -300,9 +296,10 @@
       transform: none;
     }
 
+    /* Radar-Style Status Indicators */
     .status-banner {
-      padding: 11px 14px;
-      border-radius: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
       text-align: center;
       font-weight: 800;
       font-size: 12.5px;
@@ -311,7 +308,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
     }
 
     .status-banner.due {
@@ -319,11 +323,20 @@
       color: var(--danger-text);
       border: 1px solid var(--danger-border);
     }
+    .status-banner.due .pulse-dot {
+      background: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+    }
 
     .status-banner.clear {
       background: var(--success-bg);
       color: var(--success-text);
       border: 1px solid var(--success-border);
+    }
+    .status-banner.clear .pulse-dot {
+      background: #16a34a;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+      animation: pulseGreen 2s infinite;
     }
 
     .status-banner.pending {
@@ -331,32 +344,43 @@
       color: var(--warning-text);
       border: 1px solid var(--warning-border);
     }
+    .status-banner.pending .pulse-dot {
+      background: #ca8a04;
+      box-shadow: 0 0 0 3px rgba(202, 138, 4, 0.25);
+      animation: pulseYellow 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+    }
+
+    @keyframes pulseYellow {
+      0% { box-shadow: 0 0 0 0 rgba(202, 138, 4, 0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(202, 138, 4, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(202, 138, 4, 0); }
+    }
 
     .member-header-card {
       background: #f8fafc;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
+      border-radius: 14px;
+      padding: 13px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 12px;
     }
 
-    .member-info-left {
-      display: flex;
-      flex-direction: column;
-    }
-
     .member-name {
-      font-size: 15px;
+      font-size: 15.5px;
       font-weight: 800;
       color: var(--text-main);
       line-height: 1.2;
     }
 
     .member-id-pill {
-      display: inline-flex;
       font-size: 11px;
       font-weight: 600;
       color: var(--text-muted);
@@ -371,10 +395,10 @@
     }
 
     .metric-card {
-      background: #f8fafc;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
+      border-radius: 14px;
+      padding: 14px 15px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -385,29 +409,25 @@
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
       margin-bottom: 4px;
     }
 
     .metric-value {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--text-main);
     }
 
-    .metric-value.due {
-      color: #dc2626;
-    }
+    .metric-value.due { color: #dc2626; }
+    .metric-value.clear { color: #16a34a; }
 
-    .metric-value.clear {
-      color: #16a34a;
-    }
-
+    /* Executive Passbook Card */
     .bank-card {
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      background: linear-gradient(135deg, #f0fdf4 0%, #e6f9ed 100%);
       border: 1px solid #bbf7d0;
-      border-radius: 12px;
-      padding: 14px 16px;
+      border-radius: 16px;
+      padding: 16px 18px;
       margin-bottom: 16px;
       box-shadow: var(--shadow-sm);
     }
@@ -416,7 +436,7 @@
       font-weight: 800;
       color: #166534;
       font-size: 11.5px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       display: flex;
@@ -428,40 +448,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 5px 0;
-      font-size: 12.5px;
+      padding: 6px 0;
+      font-size: 13px;
       color: #14532d;
+      border-bottom: 1px dashed rgba(187, 247, 208, 0.6);
     }
+    .bank-row:last-child { border-bottom: none; }
 
     .copy-btn {
       background: #ffffff;
       border: 1px solid #86efac;
       color: #15803d;
-      padding: 3.5px 10px;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: 7px;
       font-size: 11px;
       cursor: pointer;
       font-weight: 700;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-      transition: all 0.15s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      transition: all 0.15s ease;
     }
 
     .copy-btn:hover {
-      background: #f0fdf4;
+      background: #dcfce7;
       border-color: #4ade80;
     }
 
     .copy-btn:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
     }
 
+    /* Proof Submission Box with Image Thumbnail */
     .proof-card {
       background: #ffffff;
-      border: 1.5px dashed #93c5fd;
-      border-radius: 14px;
-      padding: 16px;
+      border: 1.5px dashed #bfdbfe;
+      border-radius: 16px;
+      padding: 18px 16px;
       margin-top: 14px;
-      background: #fbfdff;
     }
 
     .proof-card-title {
@@ -470,7 +492,7 @@
       color: var(--primary);
       margin-bottom: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
       text-align: center;
       display: flex;
       align-items: center;
@@ -480,10 +502,10 @@
 
     .custom-file-box {
       border: 1.5px dashed #cbd5e1;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 14px;
       text-align: center;
-      background: #ffffff;
+      background: #f8fafc;
       cursor: pointer;
       margin-bottom: 14px;
       transition: all 0.2s ease;
@@ -491,48 +513,45 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 6px;
     }
 
     .custom-file-box:hover {
       border-color: var(--primary-accent);
-      background: #f8fafc;
+      background: #ffffff;
     }
 
-    .upload-icon {
-      font-size: 22px;
-      line-height: 1;
+    .preview-box {
+      display: none;
+      margin-bottom: 12px;
+      text-align: center;
     }
 
-    .upload-main-text {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--primary-accent);
-    }
-
-    .upload-sub-text {
-      font-size: 11px;
-      color: var(--text-muted);
+    .preview-thumb {
+      max-height: 140px;
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
     }
 
     .pending-notice {
       background: #fffbeb;
       border: 1px solid #fef08a;
-      border-radius: 12px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 14px 16px;
       font-size: 12.5px;
       color: #713f12;
-      line-height: 1.5;
+      line-height: 1.55;
       margin-top: 14px;
-      box-shadow: var(--shadow-sm);
     }
 
     .footer-note {
       text-align: center;
       font-size: 11.5px;
       color: var(--text-muted);
-      margin-top: 16px;
-      line-height: 1.4;
+      margin-top: 18px;
+      line-height: 1.45;
     }
 
     .version-tag {
@@ -540,8 +559,8 @@
       font-size: 10px;
       font-weight: 700;
       color: #94a3b8;
-      margin-top: 10px;
-      letter-spacing: 0.5px;
+      margin-top: 12px;
+      letter-spacing: 0.6px;
     }
 
     .search-wrapper {
@@ -552,8 +571,8 @@
     .circular-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 16px 18px;
       margin-bottom: 12px;
       box-shadow: var(--shadow-sm);
       transition: transform 0.15s, box-shadow 0.15s;
@@ -561,7 +580,7 @@
 
     .circular-card:hover {
       box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .circular-header {
@@ -583,10 +602,10 @@
     .badge-new {
       background: #ef4444;
       color: #ffffff;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 800;
       padding: 2.5px 7px;
-      border-radius: 5px;
+      border-radius: 6px;
       letter-spacing: 0.4px;
     }
 
@@ -628,7 +647,7 @@
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 14px 16px;
       margin-bottom: 12px;
       display: flex;
@@ -651,7 +670,7 @@
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      background: linear-gradient(135deg, #071b2f, #2563eb);
       color: #ffffff;
       display: flex;
       align-items: center;
@@ -659,7 +678,7 @@
       font-weight: 800;
       font-size: 16px;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(30, 58, 138, 0.18);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     }
 
     .contact-details {
@@ -674,8 +693,8 @@
       text-transform: uppercase;
       color: #1d4ed8;
       background: #dbeafe;
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 2.5px 8px;
+      border-radius: 5px;
       margin-bottom: 3px;
       letter-spacing: 0.4px;
     }
@@ -701,7 +720,7 @@
       font-weight: 700;
       text-decoration: none;
       padding: 5px 9px;
-      border-radius: 6px;
+      border-radius: 7px;
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -711,7 +730,6 @@
     .action-call { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
     .action-wa { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
     .action-email { background: #f8fafc; color: #475569; border: 1px solid #cbd5e1; }
-
     .action-pill:active { transform: scale(0.96); }
   </style>
 </head>
@@ -761,7 +779,7 @@
           <span>🔍</span> Check Dues Status
         </button>
 
-        <div id="duesOutput" style="display: none; margin-top: 18px;">
+        <div id="duesOutput" style="display: none; margin-top: 20px;">
           <div id="statusBanner" class="status-banner"></div>
           
           <div class="member-header-card">
@@ -821,11 +839,16 @@
 
             <label>Payment Receipt Screenshot</label>
             <label for="proofScreenshot" class="custom-file-box">
-              <span class="upload-icon">📷</span>
-              <span class="upload-main-text" id="uploadLabel">Tap to select receipt image</span>
-              <span class="upload-sub-text" id="uploadSubLabel">Supports PNG, JPG (Max 5MB)</span>
+              <span style="font-size: 22px;">📷</span>
+              <span style="font-size: 13px; font-weight: 700; color: var(--primary-accent);" id="uploadLabel">Tap to select receipt image</span>
+              <span style="font-size: 11px; color: var(--text-muted);" id="uploadSubLabel">Supports PNG, JPG (Max 5MB)</span>
             </label>
             <input type="file" id="proofScreenshot" accept="image/*" style="display: none;" onchange="handleFileSelect(this)" />
+
+            <!-- Live Image Thumbnail Preview -->
+            <div id="previewBox" class="preview-box">
+              <img id="imagePreview" class="preview-thumb" src="" alt="Receipt Preview" />
+            </div>
 
             <button type="button" class="btn" id="submitProofBtn" onclick="submitPaymentProof()">
               <span>✓</span> Submit Payment Proof
@@ -870,67 +893,56 @@
     let allCirculars = [];
 
     function showTab(tab, btn) {
-      try {
-        var panes = document.querySelectorAll('.tab-pane');
-        for (var i = 0; i < panes.length; i++) {
-          panes[i].classList.remove('active');
-        }
-        var btns = document.querySelectorAll('.nav-btn');
-        for (var j = 0; j < btns.length; j++) {
-          btns[j].classList.remove('active');
-        }
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
 
-        var targetPane = document.getElementById('pane-' + tab);
-        if (targetPane) {
-          targetPane.classList.add('active');
-        }
+      const targetPane = document.getElementById('pane-' + tab);
+      if (targetPane) targetPane.classList.add('active');
+      if (btn) btn.classList.add('active');
 
-        if (btn) {
-          btn.classList.add('active');
-        }
-
-        if (tab === 'circulars') {
-          loadAnnouncements();
-        } else if (tab === 'desk') {
-          loadDesk();
-        }
-      } catch (err) {
-        alert("Tab navigation error: " + err.message);
-      }
+      if (tab === 'circulars') loadAnnouncements();
+      if (tab === 'desk') loadDesk();
     }
 
     function handleFileSelect(input) {
-      var label = document.getElementById('uploadLabel');
-      var sub = document.getElementById('uploadSubLabel');
+      const label = document.getElementById('uploadLabel');
+      const sub = document.getElementById('uploadSubLabel');
+      const previewBox = document.getElementById('previewBox');
+      const previewImg = document.getElementById('imagePreview');
+
       if (input.files && input.files.length > 0) {
-        label.textContent = "✓ " + input.files[0].name;
+        const file = input.files[0];
+        label.textContent = "✓ " + file.name;
         label.style.color = "#16a34a";
-        sub.textContent = (input.files[0].size / 1024).toFixed(1) + " KB selected";
+        sub.textContent = `${(file.size / 1024).toFixed(1)} KB selected`;
+
+        // Generate immediate thumbnail preview
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          previewImg.src = e.target.result;
+          previewBox.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
       } else {
         label.textContent = "Tap to select receipt image";
         label.style.color = "var(--primary-accent)";
         sub.textContent = "Supports PNG, JPG (Max 5MB)";
+        previewBox.style.display = 'none';
       }
     }
 
     async function fetchDues() {
-      var inputEl = document.getElementById('empId');
-      if (!inputEl) {
-        alert("Configuration Error: Input element with id 'empId' not found.");
-        return;
-      }
+      const inputEl = document.getElementById('empId');
+      if (!inputEl) return alert("Configuration Error: Emp ID field not found.");
 
-      var id = inputEl.value.trim();
-      var btn = document.getElementById('searchBtn');
-      var out = document.getElementById('duesOutput');
-      var banner = document.getElementById('statusBanner');
-      var bank = document.getElementById('bankSection');
-      var proof = document.getElementById('proofSection');
+      const id = inputEl.value.trim();
+      const btn = document.getElementById('searchBtn');
+      const out = document.getElementById('duesOutput');
+      const banner = document.getElementById('statusBanner');
+      const bank = document.getElementById('bankSection');
+      const proof = document.getElementById('proofSection');
 
-      if (!id) {
-        alert('Please enter your Employee ID');
-        return;
-      }
+      if (!id) return alert('Please enter your Employee ID');
 
       if (btn) {
         btn.disabled = true;
@@ -938,15 +950,15 @@
       }
       if (out) out.style.display = "none";
       
-      var submitMsg = document.getElementById('submitMsg');
+      const submitMsg = document.getElementById('submitMsg');
       if (submitMsg) submitMsg.style.display = 'none';
 
-      var oldNotice = document.getElementById('pendingVerificationNotice');
+      const oldNotice = document.getElementById('pendingVerificationNotice');
       if (oldNotice) oldNotice.remove();
 
       try {
-        var response = await fetch(API_URL + "?action=dues&empId=" + encodeURIComponent(id));
-        var res = await response.json();
+        const response = await fetch(`${API_URL}?action=dues&empId=${encodeURIComponent(id)}`);
+        const res = await response.json();
 
         if (btn) {
           btn.disabled = false;
@@ -960,33 +972,34 @@
           document.getElementById('resId').textContent = res.empId;
           document.getElementById('resPaidTill').textContent = res.paidTill || "N/A";
 
-          var cleanAmt = String(res.pendingAmount).replace(/[^0-9.]/g, '');
-          var numDue = Number(cleanAmt) || 0;
-          var amtElem = document.getElementById('resAmount');
+          const cleanAmt = String(res.pendingAmount).replace(/[^0-9.]/g, '');
+          const numDue = Number(cleanAmt) || 0;
+          const amtElem = document.getElementById('resAmount');
 
           if (res.isPendingVerification) {
             banner.className = "status-banner pending";
-            banner.innerHTML = "⏳ PAYMENT UNDER VERIFICATION";
+            banner.innerHTML = '<span class="pulse-dot"></span> PAYMENT UNDER VERIFICATION';
             amtElem.textContent = "₹" + numDue.toLocaleString('en-IN');
             amtElem.className = "metric-value";
             amtElem.style.color = "#854d0e";
             if (bank) bank.style.display = "none";
             if (proof) proof.style.display = "none";
 
-            var noticeDiv = document.createElement('div');
+            const noticeDiv = document.createElement('div');
             noticeDiv.id = "pendingVerificationNotice";
             noticeDiv.className = "pending-notice";
-            noticeDiv.innerHTML = 
-              "<strong>✓ Payment Proof Received</strong><br>" +
-              "UTR / Ref: <strong>" + res.submissionDetails.utr + "</strong><br>" +
-              "Amount: <strong>₹" + res.submissionDetails.amount + "</strong><br>" +
-              "Submitted On: " + res.submissionDetails.date + "<br><br>" +
-              "<em>Your payment receipt is under review by the Treasurer. Once approved, your record will update to clear automatically.</em>";
+            noticeDiv.innerHTML = `
+              <strong>✓ Payment Proof Received</strong><br>
+              UTR / Ref: <strong>${res.submissionDetails.utr}</strong><br>
+              Amount: <strong>₹${Number(res.submissionDetails.amount).toLocaleString('en-IN')}</strong><br>
+              Submitted On: ${res.submissionDetails.date}<br><br>
+              <em>Your receipt is under review by the Regional Treasurer. Once approved, your record will clear automatically.</em>
+            `;
             proof.parentNode.insertBefore(noticeDiv, proof.nextSibling);
 
           } else if (numDue > 0) {
             banner.className = "status-banner due";
-            banner.innerHTML = "⚠️ PAYMENT OUTSTANDING";
+            banner.innerHTML = '<span class="pulse-dot"></span> PAYMENT OUTSTANDING';
             amtElem.textContent = "₹" + numDue.toLocaleString('en-IN');
             amtElem.className = "metric-value due";
             amtElem.style.color = "";
@@ -996,8 +1009,8 @@
 
           } else {
             banner.className = "status-banner clear";
-            banner.innerHTML = "✓ ALL DUES CLEAR";
-            amtElem.textContent = "Nil";
+            banner.innerHTML = '<span class="pulse-dot"></span> ALL DUES CLEAR';
+            amtElem.textContent = "NIL";
             amtElem.className = "metric-value clear";
             amtElem.style.color = "";
             if (bank) bank.style.display = "none";
@@ -1011,16 +1024,16 @@
           btn.disabled = false;
           btn.innerHTML = "<span>🔍</span> Check Dues Status";
         }
-        alert("Failed to load records. Please verify network connection or Employee ID. (Error: " + e.message + ")");
+        alert("Failed to load records. Please verify internet connection or Employee ID.");
       }
     }
 
     async function submitPaymentProof() {
-      var utr = document.getElementById('utrNumber').value.trim();
-      var amount = document.getElementById('amountPaid').value.trim();
-      var fileInput = document.getElementById('proofScreenshot');
-      var btn = document.getElementById('submitProofBtn');
-      var msg = document.getElementById('submitMsg');
+      const utr = document.getElementById('utrNumber').value.trim();
+      const amount = document.getElementById('amountPaid').value.trim();
+      const fileInput = document.getElementById('proofScreenshot');
+      const btn = document.getElementById('submitProofBtn');
+      const msg = document.getElementById('submitMsg');
 
       if (!utr) return alert("Please enter the 12-digit UTR or Transaction Reference number.");
       if (!amount) return alert("Please enter the amount paid.");
@@ -1028,7 +1041,7 @@
         return alert("Please select a screenshot of the payment receipt.");
       }
 
-      var file = fileInput.files[0];
+      const file = fileInput.files[0];
       if (file.size > 5 * 1024 * 1024) {
         return alert("File is too large. Please upload an image under 5 MB.");
       }
@@ -1037,10 +1050,10 @@
       btn.innerHTML = "<span>⏳</span> Uploading Proof...";
       msg.style.display = "none";
 
-      var reader = new FileReader();
+      const reader = new FileReader();
       reader.onload = async function() {
-        var base64Data = reader.result.split(',')[1];
-        var payload = {
+        const base64Data = reader.result.split(',')[1];
+        const payload = {
           empId: currentMember ? currentMember.empId : document.getElementById('empId').value.trim(),
           name: currentMember ? currentMember.name : "",
           utr: utr,
@@ -1051,11 +1064,11 @@
         };
 
         try {
-          var resp = await fetch(API_URL, {
+          const resp = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify(payload)
           });
-          var result = await resp.json();
+          const result = await resp.json();
 
           btn.disabled = false;
           btn.innerHTML = "<span>✓</span> Submit Payment Proof";
@@ -1066,10 +1079,11 @@
             msg.textContent = "✓ Payment proof submitted! Updating status...";
             document.getElementById('utrNumber').value = "";
             fileInput.value = "";
+            document.getElementById('previewBox').style.display = "none";
             document.getElementById('uploadLabel').textContent = "Tap to select receipt image";
             document.getElementById('uploadLabel').style.color = "var(--primary-accent)";
             document.getElementById('uploadSubLabel').textContent = "Supports PNG, JPG (Max 5MB)";
-            setTimeout(function() { fetchDues(); }, 1200);
+            setTimeout(() => { fetchDues(); }, 1200);
           } else {
             alert(result.message || "Failed to submit proof.");
           }
@@ -1084,10 +1098,10 @@
     }
 
     async function loadAnnouncements() {
-      var box = document.getElementById('circularsList');
+      const box = document.getElementById('circularsList');
       try {
-        var response = await fetch(API_URL + "?action=announcements");
-        var res = await response.json();
+        const response = await fetch(`${API_URL}?action=announcements`);
+        const res = await response.json();
         if (res.success && res.items && res.items.length > 0) {
           allCirculars = res.items;
           renderCirculars(allCirculars);
@@ -1101,94 +1115,82 @@
 
     function isWithinDays(dateStr, days) {
       if (!dateStr) return false;
-      var d = new Date(dateStr);
+      let d = new Date(dateStr);
       if (isNaN(d.getTime())) {
-        var parts = dateStr.split(/[\/\-]/);
-        if (parts.length === 3) {
-          d = new Date(parts[2] + "-" + parts[1] + "-" + parts[0]);
-        }
+        const parts = dateStr.split(/[\/\-]/);
+        if (parts.length === 3) d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
       }
       if (isNaN(d.getTime())) return false;
-      var diffTime = Math.abs(new Date() - d);
-      var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      return diffDays <= days;
+      const diffTime = Math.abs(new Date() - d);
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) <= days;
     }
 
     function renderCirculars(items) {
-      var box = document.getElementById('circularsList');
+      const box = document.getElementById('circularsList');
       if (!items || items.length === 0) {
         box.innerHTML = "<p style='text-align:center; color:var(--text-muted); font-size:13px; margin-top:20px;'>No matching announcements found.</p>";
         return;
       }
 
-      box.innerHTML = items.map(function(item) {
-        var isNew = isWithinDays(item.date, 14);
-        var dateLabel = item.date || 'Notice';
-        var newBadge = isNew ? '<span class="badge-new">NEW</span>' : '';
-        var summaryHtml = item.summary ? '<p class="circular-summary">' + item.summary + '</p>' : '';
-        var linkHtml = item.link ? '<a href="' + item.link + '" target="_blank" class="circular-action">📄 View Circular ↗</a>' : '';
-
-        return (
-          '<div class="circular-card">' +
-            '<div class="circular-header">' +
-              '<span class="circular-date">' + dateLabel + '</span>' +
-              newBadge +
-            '</div>' +
-            '<h3 class="circular-title">' + item.title + '</h3>' +
-            summaryHtml +
-            linkHtml +
-          '</div>'
-        );
+      box.innerHTML = items.map(item => {
+        const isNew = isWithinDays(item.date, 14);
+        return `
+          <div class="circular-card">
+            <div class="circular-header">
+              <span class="circular-date">${item.date || 'Notice'}</span>
+              ${isNew ? '<span class="badge-new">NEW</span>' : ''}
+            </div>
+            <h3 class="circular-title">${item.title}</h3>
+            ${item.summary ? `<p class="circular-summary">${item.summary}</p>` : ''}
+            ${item.link ? `<a href="${item.link}" target="_blank" class="circular-action">📄 View Circular ↗</a>` : ''}
+          </div>
+        `;
       }).join('');
     }
 
     function filterCirculars() {
-      var query = document.getElementById('circularSearchInput').value.toLowerCase().trim();
-      if (!query) {
-        renderCirculars(allCirculars);
-        return;
-      }
-      var filtered = allCirculars.filter(function(c) {
-        return (c.title && c.title.toLowerCase().indexOf(query) !== -1) ||
-               (c.summary && c.summary.toLowerCase().indexOf(query) !== -1) ||
-               (c.date && c.date.toLowerCase().indexOf(query) !== -1);
-      });
+      const query = document.getElementById('circularSearchInput').value.toLowerCase().trim();
+      if (!query) return renderCirculars(allCirculars);
+      const filtered = allCirculars.filter(c => 
+        (c.title && c.title.toLowerCase().includes(query)) ||
+        (c.summary && c.summary.toLowerCase().includes(query)) ||
+        (c.date && c.date.toLowerCase().includes(query))
+      );
       renderCirculars(filtered);
     }
 
     async function loadDesk() {
-      var box = document.getElementById('deskList');
+      const box = document.getElementById('deskList');
       try {
-        var response = await fetch(API_URL + "?action=desk");
-        var res = await response.json();
+        const response = await fetch(`${API_URL}?action=desk`);
+        const res = await response.json();
         if (res.success && res.items && res.items.length > 0) {
-          box.innerHTML = res.items.map(function(item) {
-            var initials = item.name ? item.name.split(' ').map(function(n) { return n[0]; }).join('').substring(0, 2).toUpperCase() : 'WR';
-            var cleanPhone = item.phone ? item.phone.replace(/[^0-9]/g, '') : '';
+          box.innerHTML = res.items.map(item => {
+            const initials = item.name ? item.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'WR';
+            const cleanPhone = item.phone ? item.phone.replace(/[^0-9]/g, '') : '';
             
-            var avatarHtml = item.photo 
-              ? '<img src="' + item.photo + '" alt="' + item.name + '" class="contact-avatar" onerror="this.onerror=null;this.src=\'https://placehold.co/58x58?text=' + initials + '\'">'
-              : '<div class="contact-placeholder">' + initials + '</div>';
+            const avatarHtml = item.photo 
+              ? `<img src="${item.photo}" alt="${item.name}" class="contact-avatar" onerror="this.onerror=null;this.src='https://placehold.co/58x58?text=${initials}'">`
+              : `<div class="contact-placeholder">${initials}</div>`;
 
-            var callBtn = cleanPhone ? '<a href="tel:+91' + cleanPhone + '" class="action-pill action-call">📞 Call</a>' : '';
-            var waBtn = cleanPhone ? '<a href="https://wa.me/91' + cleanPhone + '" target="_blank" class="action-pill action-wa">💬 WhatsApp</a>' : '';
-            var emailBtn = item.email ? '<a href="mailto:' + item.email + '" class="action-pill action-email">✉️ Email</a>' : '';
-            var roleBadge = item.post ? '<span class="contact-role-badge">' + item.post + '</span>' : '';
+            const callBtn = cleanPhone ? `<a href="tel:+91${cleanPhone}" class="action-pill action-call">📞 Call</a>` : '';
+            const waBtn = cleanPhone ? `<a href="https://wa.me/91${cleanPhone}" target="_blank" class="action-pill action-wa">💬 WhatsApp</a>` : '';
+            const emailBtn = item.email ? `<a href="mailto:${item.email}" class="action-pill action-email">✉️ Email</a>` : '';
 
-            return (
-              '<div class="contact-card">' +
-                avatarHtml +
-                '<div class="contact-details">' +
-                  roleBadge +
-                  '<div class="contact-name">' + item.name + '</div>' +
-                  '<div class="contact-actions">' +
-                    callBtn +
-                    waBtn +
-                    emailBtn +
-                  '</div>' +
-                '</div>' +
-              '</div>'
-            );
+            return `
+              <div class="contact-card">
+                ${avatarHtml}
+                <div class="contact-details">
+                  ${item.post ? `<span class="contact-role-badge">${item.post}</span>` : ''}
+                  <div class="contact-name">${item.name}</div>
+                  <div class="contact-actions">
+                    ${callBtn}
+                    ${waBtn}
+                    ${emailBtn}
+                  </div>
+                </div>
+              </div>
+            `;
           }).join('');
         } else {
           box.innerHTML = "<p style='text-align:center; color:var(--text-muted); font-size:13px; margin-top:20px;'>No desk contacts listed.</p>";
@@ -1199,14 +1201,14 @@
     }
 
     function copyText(id, btn) {
-      var text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(function() {
-        var old = btn.innerText;
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.innerText;
         btn.innerText = "✓ Copied!";
         btn.style.background = "#dcfce7";
         btn.style.color = "#166534";
         btn.style.borderColor = "#86efac";
-        setTimeout(function() {
+        setTimeout(() => {
           btn.innerText = old;
           btn.style.background = "";
           btn.style.color = "";
